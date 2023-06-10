@@ -1,0 +1,23 @@
+{
+  "name": "@example/framework-solid",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "prettier": "prettier --write --plugin-search-dir=. ."
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "^2.2.0",
+    "astro": "^2.5.6",
+    "solid-js": "^1.7.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.10.0"
+  }
+}
