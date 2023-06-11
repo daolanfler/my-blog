@@ -9,6 +9,6 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   // Enable Solid to support Solid JSX components.
   integrations: [solid(), mdx(), tailwind()],
-  output: "server",
+  output: "hybrid",
   adapter: vercel()
 });
