@@ -1,6 +1,8 @@
 ---
 import ThemeToggle from "./ThemeToggle";
 const cookie = Astro.cookies.get("theme");
+
+export const prerender = false;
 ---
 
 <ThemeToggle themeCookie={cookie.value} client:load />
