@@ -1,5 +1,7 @@
 import { createSignal, createEffect, onMount, Show } from "solid-js";
 
+export const prerender = false;
+
 export default function ThemeToggle({ themeCookie }: { themeCookie?: string }) {
   const [theme, setTheme] = createSignal(
     localStorage.getItem("theme") ?? "light"
