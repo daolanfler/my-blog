@@ -2,6 +2,8 @@
 import BaseHead from "../components/BaseHead";
 import type { MarkdownLayoutProps } from "astro";
 import Footer from "../components/Footer";
+import ThemeToggle from "../components/ThemeToggle";
+import Theme from "./Theme.astro";
 
 // type Props = MarkdownLayoutProps<{
 //     title: string;
@@ -15,13 +17,15 @@ const { pageTitle } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <Theme />
         <BaseHead title={pageTitle} />
     </head>
-    <body>
+    <body class="dark:bg-gray-900 dark:text-white">
         <nav>
             <a href="/">Home</a>
             <a href="/">Posts</a>
             <a href="/about">About</a>
+            <ThemeToggle client:load />
         </nav>
         <slot />
         <!-- your content is injected here -->

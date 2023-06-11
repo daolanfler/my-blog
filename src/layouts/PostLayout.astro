@@ -5,7 +5,7 @@ const { pageTitle, title } = Astro.props;
 
 <BaseLayout pageTitle={pageTitle}>
     <h1>{title}</h1>
-    <article class="prose m-auto max-w-4xl prose-img:rounded-lg">
+    <article class="prose m-auto max-w-4xl prose-img:rounded-lg dark:prose-invert">
         <slot />
     </article>
 </BaseLayout>
