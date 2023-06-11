@@ -74,7 +74,7 @@ tags:
 
 由此可以设想这是因为当页面隐藏时，浏览器的机制决定了分配给隐藏页面的资源会减少。联想到浏览器有一个 visibilitychange 的事件，查看 [MDN 文档](https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API) 的描述发现 ：
 
-> Most browsers stop sending requestAnimationFrame() callbacks to background tabs or hidden `<iframe>`s in order to improve performance and battery life.
+> Most browsers stop sending requestAnimationFrame() callbacks to background tabs or hidden `<iframe>`s in order to improve performance and battery life.
 
 大多数的浏览器都会停止 `requestAnimationFrame` 中回调的执行。页面进入了一个“休眠”的状态，有理由相信，这和我们的页面卡顿有着很强的关联性。于是，监听 visibilitychange 事件，当页面不可见的时候停止 水球图的更新，当页面恢复可见时，恢复动画的更新。
 

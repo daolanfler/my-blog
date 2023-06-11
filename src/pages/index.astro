@@ -12,7 +12,7 @@ const blogEntries = await getCollection("blog");
 ---
 
 <BaseLayout>
-	<div class="p-6">
+	<div class="py-6 px-4 m-auto max-w-3xl">
 		<ul>
 			{
 				blogEntries
@@ -20,11 +20,14 @@ const blogEntries = await getCollection("blog");
 						(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 					)
 					.map((blogPostEntry) => (
-						<li>
-							<a href={`/posts/${blogPostEntry.slug}`}>
-								{blogPostEntry.data.title}
-							</a>
+						<li class="mb-4">
+							<div class="text-xl mb-2">
+								<a href={`/posts/${blogPostEntry.slug}`}>
+									{blogPostEntry.data.title}
+								</a>
+							</div>
 							<time
+								class='text-right text-gray-500'
 								datetime={blogPostEntry.data.date.toISOString()}
 							>
 								{blogPostEntry.data.date.toLocaleString()}

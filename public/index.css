@@ -1,0 +1,106 @@
+main {
+    min-height: calc(100vh - 10em);
+}
+
+.heading-wrapper {
+    --icon-size-x: 2rem;
+    --icon-size-y: 1.5rem;
+    margin-inline-end: var(--icon-size-x);
+}
+
+.heading-wrapper:not(:first-child) {
+    margin-block: 0;
+}
+
+.heading-wrapper>* {
+    display: inline;
+    margin-bottom: 0;
+}
+
+.heading-wrapper>.anchor-link {
+    position: relative;
+    top: 6px;
+    display: inline-flex;
+    margin-inline-end: calc(-1 * var(--icon-size-x));
+    width: var(--icon-size-x);
+    height: var(--icon-size-y);
+    color: var(--theme-text-light);
+    text-decoration: none;
+    justify-content: center;
+    vertical-align: baseline;
+}
+
+/* Float anchor links to the left of headings on larger screens. */
+@media (min-width: 50em) {
+    .heading-wrapper {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: baseline;
+        margin-inline-start: calc(-1 * var(--icon-size-x));
+    }
+
+    .heading-wrapper>.anchor-link {
+        margin-inline-end: 0;
+    }
+}
+
+.heading-wrapper>.anchor-link {
+    opacity: 0.5;
+}
+
+@media (hover: hover) {
+    .heading-wrapper>.anchor-link {
+        opacity: 0;
+    }
+}
+
+.heading-wrapper:hover>.anchor-link,
+.anchor-link:focus {
+    opacity: 1;
+}
+
+
+
+
+/* Highlight TOC header link matching the current scroll position */
+a.current-header-link {
+    background-color: var(--theme-bg-accent);
+    /* Indicates the current heading for forced colors users in older browsers */
+    outline: 1px solid transparent;
+}
+
+@media (forced-colors: active) {
+    a.current-header-link {
+        border: 1px solid CanvasText;
+    }
+}
+
+a.current-header-link {
+    color: var(--theme-text);
+}
+
+/* Screenreader Only Text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.focus\:not-sr-only:focus,
+.focus\:not-sr-only:focus-visible {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}

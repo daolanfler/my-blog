@@ -1,5 +1,5 @@
 const BaseHead = (props: { title?: string }) => {
-  const { title = "天方夜谈" } = props;
+  const { title = "天方夜坛" } = props;
   return (
     <>
       <title>{title}</title>
