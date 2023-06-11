@@ -16,7 +16,7 @@ tags:
 
 1. 在应用商店下载 Windows Terminal 界面现代化。顺便安利一波 [PowerToys](https://github.com/microsoft/PowerToys)，微软开源的 windows 效率工具合集软件。
 
-   ![Windows Terminal](../../assets/images/windows-terminal.jpg)
+   ![Windows Terminal](../../assets/windows-terminal.jpg)
 
 2. 安装 zsh
 

@@ -24,7 +24,7 @@ tags:
 
 如果你和我一样对 exec 执行结果中的 groups 对象为啥总是 `undefined` 感到疑问，搜索 [named capturing groups example](https://www.google.com/search?q=named+capturing+groups+example)。下面是一个 regex101 的分析截图：
 
-![命名捕获型分组示例](../../assets/images/regexp/named-capturing-groups.jpg)
+![命名捕获型分组示例](../../assets/regexp/named-capturing-groups.jpg)
 
 ## 例子 1 {#example1}
 
@@ -36,11 +36,11 @@ tags:
 
 **console：**
 
-![普通的捕获型正则 console](../../assets/images/regexp/regular-capture.jpg)
+![普通的捕获型正则 console](../../assets/regexp/regular-capture.jpg)
 
 **regex101：**
 
-![普通的捕获型正则 regex101](../../assets/images/regexp/regular-capture101.jpg)
+![普通的捕获型正则 regex101](../../assets/regexp/regular-capture101.jpg)
 
 ### 2. 正向肯定预检查 Postive Lookahead
 
@@ -50,11 +50,11 @@ tags:
 
 **console：**
 
-![Positive Lookahead console](../../assets/images/regexp/positive-lookahead.jpg)
+![Positive Lookahead console](../../assets/regexp/positive-lookahead.jpg)
 
 **regex101：**
 
-![Positive Lookahead regex101](../../assets/images/regexp/positive-lookahead101.jpg)
+![Positive Lookahead regex101](../../assets/regexp/positive-lookahead101.jpg)
 
 ### 3. 正向否定预检查 Negative Lookahead
 
@@ -64,11 +64,11 @@ tags:
 
 **console：**
 
-![Negative Lookahead console](../../assets/images/regexp/negative-lookahead.jpg)
+![Negative Lookahead console](../../assets/regexp/negative-lookahead.jpg)
 
 **regex101：**
 
-![Negative Lookahead regex101](../../assets/images/regexp/negative-lookahead101.jpg)
+![Negative Lookahead regex101](../../assets/regexp/negative-lookahead101.jpg)
 
 ### 4. 反向肯定预检查 Positive Lookbehind
 
@@ -78,11 +78,11 @@ tags:
 
 **console：**
 
-![Positive Lookbehind console](../../assets/images/regexp/positive-lookbehind.jpg)
+![Positive Lookbehind console](../../assets/regexp/positive-lookbehind.jpg)
 
 **regex101：**
 
-![Positive Lookbehind regex101](../../assets/images/regexp/positive-lookbehind101.jpg)
+![Positive Lookbehind regex101](../../assets/regexp/positive-lookbehind101.jpg)
 
 ### 5. 反向否定预检查 Negative Lookbehind
 
@@ -92,11 +92,11 @@ tags:
 
 **console：**
 
-![Negative Lookbehind console](../../assets/images/regexp/negative-lookbehind.jpg)
+![Negative Lookbehind console](../../assets/regexp/negative-lookbehind.jpg)
 
 **regex101：**
 
-![Negative Lookbehind regex101](../../assets/images/regexp/negative-lookbehind101.jpg)
+![Negative Lookbehind regex101](../../assets/regexp/negative-lookbehind101.jpg)
 
 ### 总结
 
@@ -116,7 +116,7 @@ tags:
 
 **解释：**
 
-![Negative Lookbehind regex101](../../assets/images/regexp/thousand-delimiter.jpg)
+![Negative Lookbehind regex101](../../assets/regexp/thousand-delimiter.jpg)
 
 上面的千分位分隔正则表达式对没有小数点部分的字符串无效，更完整的可以使用如下的方法：
 

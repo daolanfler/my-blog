@@ -10,5 +10,8 @@ export default defineConfig({
   // Enable Solid to support Solid JSX components.
   integrations: [solid(), mdx(), tailwind()],
   output: "hybrid",
-  adapter: vercel()
+  adapter: vercel(),
+  experimental: {
+    assets: true
+  }
 });

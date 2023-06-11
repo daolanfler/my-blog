@@ -10,7 +10,7 @@ tags:
 
 可交互性的示例，请访问 [observehq notebook](https://observablehq.com/d/70713e198a9a835b)
 
-![liquidfill gif](../../assets/images/liquidfill.gif)
+<img src="/images/liquidfill.gif" alt="Liquid Fill GIF" />
 
 1. 圆环
 
@@ -60,15 +60,15 @@ tags:
 
 - 发现这个 AnimationFrameFired 的的事件非常奇怪：第一次的时候执行了足足有 1s 中，而这 1 秒钟内又有 40 次左右的 timerFlush （d3js 中用来延迟执行回调的函数）执行，而且其执行时间从 7ms 到 144 ms 之间，变化幅度大。
 
-  ![第1段](../../assets/images/profiles/profile-1.jpg)
+  ![第1段](../../assets/profiles/profile-1.jpg)
 
 - 在这 1s 之后，又有几十次的 AnimationFrameFired , 而这一次每一个 AnimationFrameFired 只有一次 timerflush，且执行时间在 8.5ms 左右，是正常的 20 多倍
 
-  ![第2段](../../assets/images/profiles/profile-2.jpg)
+  ![第2段](../../assets/profiles/profile-2.jpg)
 
 - 在这之后，时间已经来到了 4.5s , 后面的 AnimationFrameFired 的执行时长才恢复到 0.14ms 的正常水平
 
-  ![第3段](../../assets/images/profiles/profile-3.jpg)
+  ![第3段](../../assets/profiles/profile-3.jpg)
 
 可见我们找到了页面卡顿的原因！ 之前都是切换其他 tab 去干其他事情了，再回到这个 tab 发现页面卡死了，由于大量的 AnimationFrameFired 在页面唤醒时被执行，在其他页面停留的越久，就越多，导致了页面崩溃！ 而短暂的停留，比如 30 分钟，计算机的性能还能够 handle 只是需要 4.5s 的反应时间, 而过了 12 小时，浏览器则崩溃了也不足为奇。
 
