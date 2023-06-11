@@ -1,35 +1,31 @@
 ---
 // Component Imports
+import { getCollection } from "astro:content";
 import Counter from "../components/Counter";
-import GreetingCard from '../components/greeting/GreetingCard.astro'
+import GreetingCard from "../components/greeting/GreetingCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const blogEntries = await getCollection("blog");
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<style>
-			html,
-			body {
-				font-family: system-ui;
-				margin: 0;
+<BaseLayout>
+	<div class="p-6">
+		<ul>
+			{
+				blogEntries.map((blogPostEntry) => (
+					<li>
+						<a href={`/my-blog-url/${blogPostEntry.slug}`}>
+							{blogPostEntry.data.title}
+						</a>
+						<time datetime={blogPostEntry.data.date.toISOString()}>
+							{blogPostEntry.data.date.toLocaleString()}
+						</time>
+					</li>
+				))
 			}
-			body {
-				padding: 2rem;
-			}
-		</style>
-	</head>
-	<body>
-		<main>
-			<Counter client:visible>
-				<h1>Hello, Solid!</h1>
-			</Counter>
-			<GreetingCard name="Fangqi" message="Hello" />
-		</main>
-	</body>
-</html>
+		</ul>
+	</div>
+</BaseLayout>

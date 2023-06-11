@@ -1,7 +1,8 @@
 ---
 title: this in javascript's function
 date: 2018-04-06 23:35:06
-tags: javascript
+tags: 
+  - javascript
 ---
 
 ## 一般情况 {#usual-case}
