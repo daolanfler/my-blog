@@ -14,8 +14,10 @@ const theme = (() => {
 
 if (theme === "light") {
     document.documentElement.classList.remove("dark");
+    document.cookie = "theme=light;path=/";
 } else {
     document.documentElement.classList.add("dark");
-    }
-    window.localStorage.setItem("theme", theme);
+    document.cookie = "theme=dark;path=/";
+}
+window.localStorage.setItem("theme", theme);
 </script>

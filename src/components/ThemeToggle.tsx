@@ -1,13 +1,15 @@
 import { createSignal, createEffect, onMount, Show } from "solid-js";
 
-export default function ThemeToggle() {
+export default function ThemeToggle({ themeCookie }: { themeCookie?: string }) {
   const [theme, setTheme] = createSignal(
     localStorage.getItem("theme") ?? "light"
   );
   const [mounted, setMounted] = createSignal(false);
 
   const handleClick = () => {
-    setTheme(theme() === "light" ? "dark" : "light");
+    const nextTheme = theme() === "light" ? "dark" : "light"
+    setTheme(nextTheme);
+    document.cookie = `theme=${nextTheme}; path=/`;
   };
 
   createEffect(() => {
@@ -26,7 +28,11 @@ export default function ThemeToggle() {
   return (
     <Show
       when={mounted()}
-      fallback={<div class="w-6"></div>}
+      fallback={
+        <button onClick={handleClick}>
+          {themeCookie === "dark" ? "🌞" : "🌙"  }
+        </button>
+      }
     >
       <button onClick={handleClick}>{theme() === "light" ? "🌙" : "🌞"}</button>
     </Show>

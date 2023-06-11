@@ -2,7 +2,7 @@
 import BaseHead from "../components/BaseHead";
 import type { MarkdownLayoutProps } from "astro";
 import Footer from "../components/Footer";
-import ThemeToggle from "../components/ThemeToggle";
+import ThemeWrapper from "../components/ThemeWrapper.astro";
 import Theme from "./Theme.astro";
 
 // type Props = MarkdownLayoutProps<{
@@ -29,7 +29,7 @@ const { pageTitle } = Astro.props;
             <div class="flex items-center text-lg">
                 <a href="/snippet" class="mr-2">Snippet</a>
                 <a href="/about" class="mr-2">About</a>
-                <ThemeToggle client:load />
+                <ThemeWrapper />
             </div>
         </nav>
         <main>
