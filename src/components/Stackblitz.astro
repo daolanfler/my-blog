@@ -1,0 +1,21 @@
+---
+const { id } = Astro.props;
+console.log(id);
+---
+
+<div id="blitz" data-slug={id}></div>
+
+<script type="module" is:inline>
+import sdk from "https://unpkg.com/@stackblitz/sdk@1/bundles/sdk.m.js";
+window.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById("blitz");
+    const slug = el.dataset.slug;
+    console.log(slug, el)
+    sdk.embedProjectId("blitz", slug, {
+        forceEmbedLayout: true,
+        openFile: "index.js",
+        height: 600,
+        devToolsHeight: 50,
+    });
+})
+</script>

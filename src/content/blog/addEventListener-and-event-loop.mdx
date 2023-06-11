@@ -6,6 +6,8 @@ tags:
   - event-loop
 ---
 
+import Stackblitz from '../../components/Stackblitz.astro'
+
 TLDR; 是的，而且是同步执行
 
 之前看到的这篇 Jake Archibald [Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) 关于 event-loop 的文章，有一个疑惑，同样是 addEventListener，如果是用户点击触发的，那事件回调就是异步的，如果通过 `el.click()` 这种 javascript 触发的方式则是[同步的](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/#:~:text=event%20to%20dispatch-,synchronously,-%2C%20so%20the%20script)，那冒泡事件的回调和原始事件的回调是不是在同一个 task 中执行呢？
@@ -29,7 +31,7 @@ TLDR; 是的，而且是同步执行
 > If the [stack of script settings objects](https://html.spec.whatwg.org/multipage/webappapis.html#stack-of-script-settings-objects) is now empty, [perform a microtask checkpoint](https://html.spec.whatwg.org/multipage/webappapis.html#perform-a-microtask-checkpoint)
 > — [HTML: Cleaning up after a callback](https://html.spec.whatwg.org/multipage/webappapis.html#clean-up-after-running-a-callback) step 3
 
-<!-- 具体例子看后文，结果证明了原始事件和冒泡事件的确是在同一个 event-loop 中同步执行的。 -->
+{/* <!-- 具体例子看后文，结果证明了原始事件和冒泡事件的确是在同一个 event-loop 中同步执行的。 --> */}
 
 下面用例子验证一下。
 

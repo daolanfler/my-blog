@@ -2,16 +2,18 @@
 import BaseLayout from "./BaseLayout.astro";
 import type { MarkdownLayoutProps } from "astro";
 
-type Props = MarkdownLayoutProps<{
-    title: string;
+interface Titles {
+    title?: string;
     pageTitle?: string;
-}>;
-const { pageTitle, title } = Astro.props.frontmatter || Astro.props;
+}
+
+type Props = MarkdownLayoutProps<Titles> | Titles;
+const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle || title}>
     <article
-        class="px-4 prose m-auto max-w-3xl prose-img:rounded-lg dark:prose-invert prose-headings:mt-4 prose-hr:my-4 prose-hr:border prose-hr:border-dashed prose-hr:border-gray-400"
+        class="px-4 prose m-auto max-w-3xl prose-img:rounded dark:prose-invert prose-headings:mt-4 prose-hr:my-4 prose-hr:border prose-hr:border-dashed prose-hr:border-gray-400"
     >
         <slot />
     </article>

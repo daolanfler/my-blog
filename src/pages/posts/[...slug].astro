@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { CollectionEntry, getCollection } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
 
 // 1. Generate a new path for every collection entry
@@ -12,11 +12,11 @@ export async function getStaticPaths() {
 }
 
 // 2. When it's time to render, you can get the entry directly from the prop
-const { entry } = Astro.props;
+const { entry } = Astro.props as { entry: CollectionEntry<"blog"> };
 const { Content } = await entry.render();
 ---
 
-<PostLayout>
+<PostLayout title={entry.data.title} pageTitle={entry.data.pageTitle}>
   <h1>{entry.data.title}</h1>
   <Content />
 </PostLayout>
