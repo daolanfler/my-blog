@@ -1,6 +1,7 @@
 ---
 // Component Imports
 import Counter from "../components/Counter";
+import GreetingCard from '../components/greeting/GreetingCard.astro'
 
 // Full Astro Component Syntax:
 // https://docs.astro.build/core-concepts/astro-components/
@@ -28,6 +29,7 @@ import Counter from "../components/Counter";
 			<Counter client:visible>
 				<h1>Hello, Solid!</h1>
 			</Counter>
+			<GreetingCard name="Fangqi" message="Hello" />
 		</main>
 	</body>
 </html>

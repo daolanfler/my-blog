@@ -1,0 +1,28 @@
+---
+import BaseHead from "../components/BaseHead";
+import type { MarkdownLayoutProps } from "astro";
+import Footer from "../components/Footer";
+
+// type Props = MarkdownLayoutProps<{
+//     title: string;
+// }> & { title: string };
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <BaseHead title={pageTitle} />
+    </head>
+    <body>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Posts</a>
+            <a href="#">Contact</a>
+        </nav>
+        <slot />
+        <!-- your content is injected here -->
+        <Footer />
+    </body>
+</html>

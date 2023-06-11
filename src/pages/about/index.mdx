@@ -1,0 +1,24 @@
+---
+# layout: ../../layouts/PostLayout.astro
+title: 'About'
+pageTitle: 关于
+---
+
+import PostLayout from '../../layouts/PostLayout.astro'
+
+<PostLayout title={frontmatter.title} pageTitle={frontmatter.pageTitle}>
+
+# Hello 
+
+
+- this is one
+- this is two
+
+```js
+
+console.log('hello')
+
+
+
+```
+</PostLayout>
