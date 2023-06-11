@@ -24,7 +24,10 @@ export default function ThemeToggle() {
   });
 
   return (
-    <Show when={mounted()}>
+    <Show
+      when={mounted()}
+      fallback={<div class="w-6"></div>}
+    >
       <button onClick={handleClick}>{theme() === "light" ? "🌙" : "🌞"}</button>
     </Show>
   );
