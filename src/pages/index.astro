@@ -19,19 +19,21 @@ const blogEntries = await getCollection("blog");
 					.sort(
 						(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 					)
-					.map((blogPostEntry) => (
+					.map((entry) => (
 						<li class="mb-4">
 							<div class="text-xl mb-2">
-								<a href={`/posts/${blogPostEntry.slug}`}>
-									{blogPostEntry.data.title}
+								<a href={`/posts/${entry.slug}`}>
+									{entry.data.title}
 								</a>
 							</div>
-							<time
-								class='text-right text-gray-500'
-								datetime={blogPostEntry.data.date.toISOString()}
-							>
-								{blogPostEntry.data.date.toLocaleString()}
-							</time>
+							<div class="text-left text-gray-500 ">
+								<time
+									datetime={entry.data.date.toISOString()}
+									class="mr-2"
+								>
+									{entry.data.date.toLocaleString()}
+								</time>
+							</div>
 						</li>
 					))
 			}

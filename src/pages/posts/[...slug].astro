@@ -15,7 +15,7 @@ import PostLayout from "../../layouts/PostLayout.astro";
 // const { entry } = Astro.props as { entry: CollectionEntry<"blog"> };
 // const { Content } = await entry.render();
 
-import { getEntry } from 'astro:content'
+import { getEntry } from "astro:content";
 
 // 1. Get the slug from the incoming server request
 const { slug } = Astro.params;
@@ -34,6 +34,11 @@ const { Content } = await entry.render();
 
 <PostLayout title={entry.data.title} pageTitle={entry.data.pageTitle}>
   <h1>{entry.data.title}</h1>
+  <div class="text-right italic mb-4">
+    发布于 <time>{entry.data.date.toLocaleString()}</time>
+    <a
+      class="ml-2"
+      href={`/posts/${entry.slug}#disqus_thread`}></a>
+  </div>
   <Content />
 </PostLayout>
-
