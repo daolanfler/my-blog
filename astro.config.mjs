@@ -12,7 +12,7 @@ import { autolinkConfig } from "./plugins/rehype-autolink-config";
 export default defineConfig({
   // Enable Solid to support Solid JSX components.
   integrations: [solid(), mdx(), tailwind()],
-  output: "hybrid",
+  output: "server",
   adapter: vercel(),
   experimental: {
     assets: true,
