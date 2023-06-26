@@ -8,11 +8,11 @@
     <div class="card m-auto mt-20">
       <div class="card-front">
         <!-- 正面内容 -->
-        card front
+        front
       </div>
       <div class="card-back">
         <!-- 背面内容 -->
-        card back
+        back
       </div>
     </div>
   </body>
@@ -20,7 +20,7 @@
 
 <style>
   .card {
-    width: 200px;
+    width: 600px;
     height: 300px;
     perspective: 1000px; /* 创建3D视角 */
     position: relative;
@@ -32,7 +32,7 @@
     height: 100%;
     position: absolute;
     backface-visibility: hidden; /* 隐藏背面内容 */
-    transition: transform 0.7s ease-in; /* 添加过渡效果 */
+    transition: transform 3s; /* 添加过渡效果 */
     @apply flex justify-center items-center text-2xl text-white;
   }
 
@@ -52,6 +52,7 @@
   }
 
   .card:hover .card-back {
-    transform: rotateY(0deg); /* 鼠标移上去时翻转背面 */
+    /* 注意这里是 360 而不是 0 */
+    transform: rotateY(360deg); /* 鼠标移上去时翻转背面 */
   }
 </style>
