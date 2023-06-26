@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flip Card</title>
+  </head>
+  <body >
+    <div class="card m-auto mt-20">
+      <div class="card-front ">
+        <!-- 正面内容 -->
+        card front
+      </div>
+      <div class="card-back ">
+        <!-- 背面内容 -->
+        card back
+      </div>
+    </div>
+  </body>
+
+  <style>
+    .card {
+      width: 200px;
+      height: 300px;
+      perspective: 1000px; /* 创建3D视角 */
+      position: relative;
+    }
+
+    .card-front,
+    .card-back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      backface-visibility: hidden; /* 隐藏背面内容 */
+      transition: transform 0.7s ease-in; /* 添加过渡效果 */
+      @apply flex justify-center items-center text-2xl text-white;
+    }
+
+    .card-front {
+      /* 正面样式 */
+      @apply bg-gradient-to-r from-orange-600 to-blue-200;
+    }
+
+    .card-back {
+      /* 背面样式 */
+      transform: rotateY(180deg); /* 初始时将背面旋转180度隐藏 */
+      @apply bg-gradient-to-l from-orange-600 to-blue-200;
+    }
+
+    .card:hover .card-front {
+      transform: rotateY(180deg); /* 鼠标移上去时翻转正面 */
+    }
+
+    .card:hover .card-back {
+      transform: rotateY(0deg); /* 鼠标移上去时翻转背面 */
+    }
+  </style>
+</html>
