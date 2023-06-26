@@ -6,20 +6,24 @@
     </head>
     <body>
         <div class="grid-bg"></div>
-        <div class="text-2xl text-white text-center z-10">
+        <div class="text-2xl text-white text-center z-10 text">
             倾斜的背景，使用 css 但是在倾斜角度较大的时候会有锯齿
         </div>
     </body>
 </html>
 
-<style>
+<style lang="scss">
     body {
         @apply w-screen h-screen overflow-hidden relative;
         @apply flex items-center justify-center;
         background: linear-gradient(225deg, #036075 0%, #08192c 100%);
         border-radius: 0px 0px 0px 0px;
-        
-        perspective: 500px;
+
+        perspective: 500px; /* 透视，只对 3d 有效，需要在父元素上设置 */
+
+        .text {
+            text-align: center;
+        }
     }
 
     .grid-bg {
@@ -37,7 +41,5 @@
         transform-style: preserve-3d;
         transform: translateX(-50vw) translateY(-60vh) rotateX(20deg);
         @apply absolute h-[200vh] w-[200vw] top-0 left-0;
-    }
-    .text {
     }
 </style>
