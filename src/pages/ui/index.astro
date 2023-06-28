@@ -1,0 +1,29 @@
+---
+import { readdir } from "fs/promises";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const url = new URL(import.meta.url);
+
+const dir = url.pathname.split("/").slice(0, -1).join("/");
+
+const files = await readdir(dir);
+
+const entries = files
+  .filter((f) => f.endsWith(".astro") && f !== "index.astro")
+  .map((f) => f.replace(".astro", ""));
+---
+
+<BaseLayout>
+  <main class="py-6 px-4 m-auto max-w-3xl">
+
+  <ul>
+    {
+      entries.map((item) => (
+        <li class="mb-2 text-lg">
+          <a href={`/ui/${item}`} class="visited:underline ">{item}</a>
+        </li>
+      ))
+    }
+  </ul>
+  </main>
+</BaseLayout>
