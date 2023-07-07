@@ -23,7 +23,7 @@ tags:
 - Type aliases may not participate in declaring merging, but interfaces can.
 - Interfaces may only be used to declare the shapes of objects, not rename primitives.
 
-visit [Official Doc](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces) to see the playground example.
+建议[查看官方文档](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#differences-between-type-aliases-and-interfaces)上的 playgound 例子。
 
 ## 代数类型
 
@@ -248,6 +248,36 @@ type test2 = C extends "random" | "child" | "hello" | "world" ? true : false; //
 type test3 = C extends "random" | "child" ? true : false; // false
 
 type D = A & B; // never
+```
+
+## Discriminated Union
+
+业务中常有这样的需求，比如接口返回成功时，`code` 字段是 0，数据是一个类型，错误时 `code` 字段是 -1 ，有一个错误信息字段 message。
+这时候可以用 [Discriminated Union](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#discriminated-unions) 就有
+用武之地了。不过可惜的是:
+
+> When every type in a union contains a common property with literal types, TypeScript considers that to be a discriminated union, and can narrow out the members of the union.
+
+这里只能是 _literal types_
+
+```ts
+declare function fetchInstance<T>():
+  | {
+      code: 0;
+      data: T;
+    }
+  | {
+      code: -1; // Exclude<number, 0> 是行不通的。只能是 literal types
+      message: string;
+    };
+
+const result = fetchInstance<number[]>()
+
+if (result.code ===0) {
+    console.log(result.data) // no message field
+} else {
+    console.log(result.message) // no data field
+}
 ```
 
 ## Reference
