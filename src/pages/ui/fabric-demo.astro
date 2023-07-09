@@ -1,0 +1,69 @@
+---
+import SimpleHtml from "../../layouts/SimpleHtml.astro";
+
+---
+
+<SimpleHtml>
+    <title slot="title">fabric-demo</title>
+    <div class="m-auto pt-8 flex justify-center ">
+        <canvas
+            id="anime"
+            class="border border-gray-300"
+            width="400"
+            height="300"
+        >
+        </canvas>
+    </div>
+</SimpleHtml>
+
+<style>
+    body {
+        @apply bg-slate-700;
+    }
+</style>
+
+<script>
+    import * as fabric from "fabric";
+
+    function animateWithPolyline() {
+        const animateLine = (line: fabric.Polyline) => {
+            let offset = line.strokeDashOffset || 0;
+            if (offset < -30) {
+                offset = 0;
+            }
+            // 每一帧的偏移，如果刷新率高，速度就更快 哈哈哈
+            line.set("strokeDashOffset", offset - 0.3);
+            fabric.util.requestAnimFrame(animateLine.bind(null, line));
+            canvas.renderAll();
+        };
+
+        const canvas = new fabric.Canvas("anime", {
+            renderOnAddRemove: false,
+            selection: false,
+            containerClass: "canvas-wrapper",
+        });
+
+        const line = new fabric.Polyline(
+            [
+                { x: 20, y: 20 },
+                { x: 390, y: 200 },
+                { x: 370, y: 300 },
+                { x: 150, y: 250 },
+                { x: 20, y: 20 },
+            ],
+            {
+                strokeDashArray: [10, 5],
+                stroke: "pink",
+                strokeWidth: 4,
+                fill: "transparent",
+            }
+        );
+
+        canvas.add(line);
+        animateLine(line);
+    }
+
+    animateWithPolyline();
+
+    console.log("shit");
+</script>
