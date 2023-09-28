@@ -44,9 +44,6 @@ const { Content } = await entry.render();
   <h1>{entry.data.title}</h1>
   <div class="text-right italic mb-4">
     发布于 <time>{entry.data.date.toLocaleString()}</time>
-    <a
-      class="ml-2"
-      href={`/posts/${entry.slug}#disqus_thread`}></a>
   </div>
   <Content />
 </PostLayout>
