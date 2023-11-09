@@ -1,8 +1,25 @@
 ---
-layout: ../../layouts/PostLayout.astro 
+layout: ../../layouts/PostLayout.astro
 title: Snippets
 pageTitle: Snippets
 date: 2021-10-04 20:51
+---
+
+### 杀死占用端口的进程
+
+on Linux:
+
+```bash
+lsof -ti :3000 | xargs kill -9
+```
+
+on Windows:
+
+```powershell
+netstat -ano | findstr :3000
+taskkill /f /pid you_pid
+```
+
 ---
 
 ### Promise.all 错误处理
@@ -149,7 +166,7 @@ neovim 的剪贴板是有一个优先级的，详见 [相关 issue](https://gith
 
 ---
 
-### Optional chaining 
+### Optional chaining
 
 即将到来的运算符：`?.` 和 `??`
 
@@ -170,7 +187,7 @@ console.log(dogName);
 
 ---
 
-### Github "dot" shortcut 
+### Github "dot" shortcut
 
 在 github 的仓库页面点击 `.` 即可打开 vscode web 版
 
@@ -182,7 +199,7 @@ console.log(dogName);
 
 ---
 
-### 使用 [JSDoc](https://jsdoc.app/) 对 js 代码注释以获得类型提示 
+### 使用 [JSDoc](https://jsdoc.app/) 对 js 代码注释以获得类型提示
 
 需要项目中有相应的 `.d.ts` 文件定义的类型，引入`@types/pkgName`或者有些库会自带 `ts declaration`或则自己定义。示例：
 
