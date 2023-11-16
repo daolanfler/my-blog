@@ -26,20 +26,25 @@ taskkill /f /pid you_pid
 
 使用 `Promise.all` 的时候，如果传入的 promise 其中一个 _reject_ 了，那么整个 `Promise.all` 也会 _reject_，
 并且会丢失其他 promise 的结果，错误信息也不太好处理 (因为不确定是哪一个 promise reject 了)。
-这时候可以使用 `Promise.allSetted` 来替代，[参考](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled), 不过要注意一下兼容性。
+这时候可以使用 `Promise.allSetted` 来替代，[参考](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/allSettled)
+, 不过要注意一下兼容性。
 
 ---
 
 ### cheatsheet
 
-当被纷繁复杂的 echarts 配置项折腾的死去活来的时候，应该早点去看看[管网上的 cheat sheet](https://echarts.apache.org/en/cheat-sheet.html)，
-同理对于其他琐碎的命令、配置，以后在一头钻进文档之前，还是先搜索一下 _关键字+cheat sheet_ 吧。类似的还有 [rust cheat sheet](https://cheats.rs/), [tldr](https://tldr.sh/), [gdb cheetsheet](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf)，以及各个网站的快捷键（如果频繁使用的话，比如白板绘图的网站 exclidraw/tldraw，快捷键都差不多，还能提升体验和效率）。
+当被纷繁复杂的 echarts 配置项折腾的死去活来的时候，应该早点去看看 [官网上的 cheat sheet](https://echarts.apache.org/en/cheat-sheet.html)，
+同理对于其他琐碎的命令、配置，以后在一头钻进文档之前，还是先搜索一下 _关键字+cheat sheet_ 吧。类似的还有 
+[rust cheat sheet](https://cheats.rs/)
+, [tldr](https://tldr.sh/), [gdb cheetsheet](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf)，
+以及各个网站的快捷键（如果频繁使用的话，比如白板绘图的网站 exclidraw/tldraw，快捷键都差不多，还能提升体验和效率）。
 
 ---
 
 ### vscode 无法识别 tailwindcss 的 `@` rules
 
-[详见此处](https://github.com/tailwindlabs/tailwindcss/discussions/5258#discussioncomment-1979394)，打开用户设置 `"scss.lint.unknownAtRules": "ignore"`
+[详见此处](https://github.com/tailwindlabs/tailwindcss/discussions/5258#discussioncomment-1979394)
+，打开用户设置 `"scss.lint.unknownAtRules": "ignore"`
 
 ---
 
@@ -59,7 +64,9 @@ export function useMap() {
 }
 ```
 
-上述的代码，明显返回的是一个元组，但是如果不加上类型标注的话推断出的返回类型为`(ShallowRef<L.Map | undefined> | ((val: L.Map) => void))[]`，相关 issues：[#6574](https://github.com/microsoft/TypeScript/issues/6574#issuecomment-339185355), [#44309](https://github.com/microsoft/TypeScript/issues/44309)
+上述的代码，明显返回的是一个元组，但是如果不加上类型标注的话推断出的返回类型为
+`(ShallowRef<L.Map | undefined> | ((val: L.Map) => void))[]`，相关 issues：
+[#6574](https://github.com/microsoft/TypeScript/issues/6574#issuecomment-339185355), [#44309](https://github.com/microsoft/TypeScript/issues/44309)
 
 ---
 
@@ -77,26 +84,30 @@ git push origin --delete $(git ls-remote --tags origin | grep "someprefix.*[^}]$
 git tag | grep ^someprefix | xargs -n 1 -I% git tag -d %
 ```
 
-vscode 也在[2023 年一月的更新](https://code.visualstudio.com/updates/v1_75#_new-commands)中增加了 `git tag` 相关的更新
+vscode 也在[2023 年一月的更新](https://code.visualstudio.com/updates/v1_75#_new-commands)中增加了 
+`git tag` 相关的更新
 
 ---
 
 ### bash 中单引号和双引号的区别
 
-`'` won't interpolate anything while `"` will [参考](https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash)
+`'` won't interpolate anything while `"` will 
+[参考](https://stackoverflow.com/questions/6697753/difference-between-single-and-double-quotes-in-bash)
 
 ---
 
 ### Windows 终止进程
 
-有一次在配置 nginx 反向代理的时候，从 windows 命令行启动了多次 nginx.exe，关闭了 termial，以为已经同时终止了 nginx.exe 进程，导致浪费了不少时间。此时可以 cd 到 nginx 目录
+有一次在配置 nginx 反向代理的时候，从 windows 命令行启动了多次 nginx.exe，关闭了 termial，以为已经同时终止了 
+nginx.exe 进程，导致浪费了不少时间。此时可以 cd 到 nginx 目录
 执行 `TASKKILL /f /im nginx.exe /T` 终止所有 nginx 进程。
 
 ---
 
 ### flex 布局中，使用 `flex: 1` 却并没有平均地分配「行/列」上的空间
 
-你可能需要设置 `min-width: 0;`，[参考](https://stackoverflow.com/a/44782536/894参考) 以及 [codepen demo](https://codepen.io/daolanfler/pen/gOvVWYJ)
+你可能需要设置 `min-width: 0;`，[参考](https://stackoverflow.com/a/44782536/894参考) 以及 
+[codepen demo](https://codepen.io/daolanfler/pen/gOvVWYJ)
 
 ---
 
@@ -114,7 +125,8 @@ function fn({ start = 0, end = 1 } = {}) {
 
 ### webpack inline loader
 
-使用 `raw-loader` 加载 svg 文件，获取其中的代码为字符串。[来源](https://github.com/codesandbox/codesandbox-client/issues/747#issuecomment-443996080) 以及 [inline loader 语法](https://webpack.js.org/concepts/loaders/#inline)
+使用 `raw-loader` 加载 svg 文件，获取其中的代码为字符串。[来源](https://github.com/codesandbox/codesandbox-client/issues/747#issuecomment-443996080)
+ 以及 [inline loader 语法](https://webpack.js.org/concepts/loaders/#inline)
 
 ```javascript
 import earthSvg from "!raw-loader!./icons/earth.svg";
@@ -131,7 +143,8 @@ config.module.rule().resourceQuery(/raw/).type("asset/source");
 
 ### git rebase/merge 中接受某一方的改动
 
-如果存在冲突，某些文件的冲突可能太多了，不想一个个区解决，可以使用以下方法，其中 `ours` 表示 _current change_ `theirs` 表示 _incomming change_。[参考](https://linuxpip.org/git-accept-all-incoming-changes/)
+如果存在冲突，某些文件的冲突可能太多了，不想一个个区解决，可以使用以下方法，其中 `ours` 表示 _current change_ 
+`theirs` 表示 _incomming change_。[参考](https://linuxpip.org/git-accept-all-incoming-changes/)
 
 ```bash
 git checkout --ours pnpm-lock.json
@@ -142,13 +155,15 @@ git add pnpm-lock.json
 
 ### github credential problem
 
-github 在 2021 年禁止了密码登录，可以使用 personal access token 替代 (literally 即原来要输入密码的地方直接输入 token 即可) 密码（可以配置 token 的有效期限、权限范围等）。
+github 在 2021 年禁止了密码登录，可以使用 personal access token 替代 (literally 即原来要输入密码的地方直接输入 
+token 即可) 密码（可以配置 token 的有效期限、权限范围等）。
 
 ---
 
 ### 如何在 vscode 中 debug vue-cli 项目
 
-在 vscode 的 Vue Tutorial [Debugging](https://code.visualstudio.com/docs/nodejs/vuejs-tutorial#_debugging) 这一章节中，提到了[这一教程](https://github.com/microsoft/vscode-recipes/tree/main/vuejs-cli)
+在 vscode 的 Vue Tutorial [Debugging](https://code.visualstudio.com/docs/nodejs/vuejs-tutorial#_debugging)
+ 这一章节中，提到了[这一教程](https://github.com/microsoft/vscode-recipes/tree/main/vuejs-cli)
 
 ---
 
@@ -183,7 +198,9 @@ console.log(dogName);
 // expected output: undefined
 ```
 
-参考 [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)，以及 [nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)，coalescing: 合并、凝聚
+参考 [optional chaining](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Optional_chaining)
+，以及 [nullish coalescing](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator)
+，coalescing: 合并、凝聚
 
 ---
 
@@ -195,7 +212,8 @@ console.log(dogName);
 
 ### $$ in Chrome Devtools
 
-`$$` is a shortcut for `document.querySelectAll`，[参考这里](https://medium.com/frontmen/art-of-debugging-with-chrome-devtools-ab7b5fd8e0b4)，但不是 `===` 的相等
+`$$` is a shortcut for `document.querySelectAll`，[参考这里](https://medium.com/frontmen/art-of-debugging-with-chrome-devtools-ab7b5fd8e0b4)
+，但不是 `===` 的相等
 
 ---
 
@@ -222,7 +240,8 @@ export default function (customHeaders = []) {
 
 ### 检测元素是否超出了边界
 
-参考 Element UI el-table 中 [showOverflowTooltip](https://github.com/ElemeFE/element/blob/50a464ea555c0711d1c47efa31c3cff742ededf1/packages/table/src/table-body.js#L252) 的实现：
+参考 Element UI el-table 中 [showOverflowTooltip](https://github.com/ElemeFE/element/blob/50a464ea555c0711d1c47efa31c3cff742ededf1/packages/table/src/table-body.js#L252)
+ 的实现：
 
 ```javascript
 export function isContentOverflow(el) {
