@@ -6,18 +6,22 @@ tags:
   - frp
   - linux
 ---
-
-前段时间武汉长时间的干旱，电力不足，公司所在园区限电，不开空调（电脑可开），所以只能远程办公。远程桌面客户端有很多，如 RemoteDesktop、向日葵、anyDesk 等。由于公司用的是内网，所以还需要一个内网穿透工具，之前在论坛看到过很多次所以我选择了 frp，还有 zerotier 等其他工具，还没研究过。
+前段时间武汉长时间的干旱，电力不足，公司所在园区限电，不开空调（电脑可开），所以只能远程办公。远程桌面客户端有很多，
+如 RemoteDesktop、向日葵、anyDesk 等。由于公司用的是内网，所以还需要一个内网穿透工具，之前在论坛看到过很多次所以我
+选择了 frp，还有 zerotier 等其他工具，还没研究过。
 
 ## frp 服务器端
 
-首先需要一个有公网 ip 的服务器，最开始我是在 digitalocean 上的 vps 上搭建的，但是由于是国外的服务器，搭建好后发现速度捉急。后来我换了个阿里云的 ECS，由于是临时使用，我就选了个最低配的 30 天试用版。
+首先需要一个有公网 ip 的服务器，最开始我是在 digitalocean 上的 vps 上搭建的，但是由于是国外的服务器，搭建好后发现速度
+捉急。后来我换了个阿里云的 ECS，由于是临时使用，我就选了个最低配的 30 天试用版。
 首先在 github release 页面找到 linux 平台的安装版本，登录到云服务器，下载并解压：
 
 ```bash
 curl -sLo/tmp/frp.tar.gz  https://github.com/fatedier/frp/releases/download/v0.44.0/frp_0.44.0_linux_amd64.tar.gz
 
-tar -xvf /tmp/frp.tar.gz
+# 解压到 /tmp 目录
+tar -xvf /tmp/frp.tar.gz -C /tmp
+rm /tmp/frp.tar.gz
 
 sudo mv /tmp/frp_0.44.0_linux_amd64 ~/frp
 ```
@@ -57,7 +61,8 @@ max_pool_count = 50
 tcp_mux = true
 ```
 
-其中 vhost_http_port 和 vhost_https_port 默认为 80 和 443，如果你的服务器有作博客之类的则可能已经被占用，所以这里做了修改。配置好之后开启服务：`./frps -c frps.ini` 即可。
+其中 `vhost_http_port` 和 `vhost_https_port` 默认为 80 和 443，如果你的服务器有博客之类的则可能已经被占用
+，所以这里做了修改。配置好之后开启服务：`./frps -c frps.ini` 即可。
 
 ### 使用 systemd 设置服务端开机自启
 
@@ -83,7 +88,8 @@ ExecStop=/usr/bin/killall frpc
 WantedBy=multi-user.target
 ```
 
-然后在 `/etc/systemd/system/` 创建一个 symlink，启动 & enable 服务即可
+然后在 `/etc/systemd/system/` 创建一个 symlink，启动 & enable 服务即可，注意日志的路径记得在 `frps.ini` 中
+配置好，最好用绝对路径。
 
 ```bash
 ln -s /root/frp/frps.service /etc/systemd/system/frps.service
@@ -95,7 +101,8 @@ systemctl enable frps.service
 
 ## frp 客户端
 
-一个服务端可以链接许多个客户端，上面的配置中 max_pool_count 配置了 50。客户端支持各种类型（功能）的连接，ssh tcp http 等，下面说一下我用到的 3 种。
+一个服务端可以链接许多个客户端，上面的配置中 max_pool_count 配置了 50。客户端支持各种类型（功能）的连接，ssh、tcp、
+http 等，下面说一下我用到的 3 种。
 
 ### wsl2 开启 ssh 连接
 
@@ -110,12 +117,14 @@ token = secret_token # 服务端配置的 token
 type = tcp
 local_ip = 127.0.0.1
 local_port = 22
-remote_port = 6001
+remote_port = 6001 # 注意这里要保证 vps 防火墙规则允许此端口
 ```
 
 `./frpc -c frpc.ini` 开启 frp 客户端连接。
 
-首先被 ssh 的 wsl 需要开启 sshd 服务，由于 wsl2 被砍掉了 system init 服务，无法设置开机自启，所以需要手动启动服务 `sudo service sshd start`。不过在启动之前，需要先编辑一下 `/etc/ssh/sshd_config` 配置文件，在末尾加入（或者 uncomment）下面两个配置，注意 `AllowUsers` 后面是个 _tab_。
+首先被 ssh 的 wsl 需要开启 sshd 服务，由于 wsl2 被砍掉了 system init 服务，无法设置开机自启，所以需要手动启动服务
+`sudo service sshd start`。不过在启动之前，需要先编辑一下 `/etc/ssh/sshd_config` 配置文件，
+在末尾加入（或者 uncomment）下面两个配置，注意 `AllowUsers` 后面是个 _tab_。
 
 ```plaintext
 PasswordAuthentication yes
@@ -141,7 +150,8 @@ local_port = 3389
 remote_port = 7005
 ```
 
-打开 **cmd** 切换到 frp 程序目录，输入 `./frpc -c frpc.ini` 开启 frp 客户端连接。如果有需要，可以通过设置 windows 开机脚本来让 frpc 开机自启，可以参看 [这里](https://lo-li.cn/239)
+打开 **cmd** 切换到 frp 程序目录，输入 `./frpc -c frpc.ini` 开启 frp 客户端连接。如果有需要，可以通过设置
+windows 开机脚本来让 frpc 开机自启，可以参看 [这里](https://lo-li.cn/239)
 
 在另一台电脑打开 RDP 连接 `server_addr:7005`，输入远程电脑允许的用户凭据即可。
 
@@ -209,13 +219,15 @@ server {
   }
 ```
 
-在家中的电脑开启前端服务，修改 api 服务为 `http://project-api.custom.domain:5000`，这里的 5000 还是为上文服务端配置的端口。
+在家中的电脑开启前端服务，修改 api 服务为 `http://project-api.custom.domain:5000`，这里的 5000 还是为上文
+服务端配置的端口。
 
 ## 可能遇到的问题
 
 1. 如果云服务器开启了防火墙，比如 ufw (Ubuntu)，需要 `sudo ufw enable port` 来开启相应的端口
 2. 以上的 wsl 都是 Ubuntu
-3. Windows 上无法访问 nginx 反向代理暴露的端口的服务，可能是被 windows 防火墙规则阻止，打开 _高级安全 Windows Defender 防火墙_ 允许 nginx.exe 的入站与出站流量
+3. Windows 上无法访问 nginx 反向代理暴露的端口的服务，可能是被 windows 防火墙规则阻止，打开
+   _高级安全 Windows Defender 防火墙_ 允许 nginx.exe 的入站与出站流量
 
 ## 参考
 
