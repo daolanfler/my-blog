@@ -14,9 +14,6 @@ export default defineConfig({
   integrations: [solid(), mdx(), tailwind()],
   output: "hybrid",
   adapter: vercel(),
-  experimental: {
-    assets: true,
-  },
   markdown: {
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, autolinkConfig]],
   },
