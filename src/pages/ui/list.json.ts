@@ -1,4 +1,4 @@
-import { APIRoute } from "astro";
+import type { APIRoute } from "astro";
 
 // Outputs: /builtwith.json
 export const get: APIRoute = async  ({params, request}) => {

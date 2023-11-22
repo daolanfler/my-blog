@@ -1,7 +1,8 @@
 ---
 /** ------------- SSG start -------------- */
 
-import { CollectionEntry, getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
 
 // 1. Generate a new path for every collection entry
