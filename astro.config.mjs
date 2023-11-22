@@ -8,10 +8,12 @@ import rehypeSlug from "rehype-slug";
 import vercel from "@astrojs/vercel/serverless";
 import { autolinkConfig } from "./plugins/rehype-autolink-config";
 
+import serviceWorker from 'astrojs-service-worker'
+
 // https://astro.build/config
 export default defineConfig({
   // Enable Solid to support Solid JSX components.
-  integrations: [solid(), mdx(), tailwind()],
+  integrations: [solid(), mdx(), tailwind(), serviceWorker()],
   output: "hybrid",
   adapter: vercel(),
   markdown: {
