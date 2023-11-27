@@ -10,28 +10,39 @@ tags:
 
 以下都是预检查，类似于`(?:)`非捕获型分组，匹配到的内容不会被捕获
 
-`(?=pattern)` _Positive Lookahead Assert_ 正向肯定预检查
+- `(?=pattern)` _Positive Lookahead Assert_ 正向肯定预检查
 
-`(?!pattern)` _Negative Lookahead Assert_ 正向否定预检查
+- `(?<=pattern)` _Positive Lookbehind Assert_ 反向肯定预检查
 
-`(?<=pattern)` _Positive Lookbehind Assert_ 反向肯定预检查
+- `(?!pattern)` _Negative Lookahead Assert_ 正向否定预检查
 
-`(?<!pattern)` _Negative Lookbehind Assert_ 反向否定预检查
+- `(?<!pattern)` _Negative Lookbehind Assert_ 反向否定预检查
 
-## 温习相关知识
+## 相关 API
 
-首先了解一下[`RegExp.prototype.exec()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#description)这个正则对象的方法。
+首先需要看一下 [`RegExp.prototype.exec()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#description)
+这个正则对象上的方法。
 
-如果你和我一样对 exec 执行结果中的 groups 对象为啥总是 `undefined` 感到疑问，搜索 [named capturing groups example](https://www.google.com/search?q=named+capturing+groups+example)。下面是一个 regex101 的分析截图：
+如果你和我一样对 exec 执行结果中的 groups 对象为啥总是 `undefined` 感到疑问, 具体查看 MDN 上
+[RegExp.prototype.exec()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/exec#groups)
+返回结果中 `groups` 字段的解释:
 
-![命名捕获型分组示例](../../assets/regexp/named-capturing-groups.jpg)
+> A null-prototype object of named capturing groups, whose keys are the names, and values are the
+> capturing groups, or undefined if no named capturing groups were defined. See capturing groups for more information.
 
-## 例子 1 {#example1}
+可以看到这个这里面只包含了 `named` capturing groups，也就是命名捕获型分组，而不是普通的捕获型分组。
+
+冷知识：命名捕获型分组是 ES2018 引入的，所以在 ES2018 之前的版本中，`groups` 字段是 `undefined` 的。
+
+以这个正则表达式为例 `/(?<title>\w+), yes \k<title>/` [点击跳转 regex101 ](https://regex101.com/r/GJH4n2/1)，
+可以看到 `title` 就是一个 _named caputuring group_。 而 `\k<title>` 则是一个 _backreference_。
+
+## 举例说明
 
 ### 1. 普通的捕获型正则
 
 ```js
-;/windows(95|NT|xp)/.exec('windows95OtherString')
+/windows(95|NT|xp)/.exec("windows95OtherString");
 ```
 
 **console：**
@@ -45,7 +56,7 @@ tags:
 ### 2. 正向肯定预检查 Postive Lookahead
 
 ```js
-;/windows(?=95|NT|xp)/.exec('windows95hahahah')
+/windows(?=95|NT|xp)/.exec("windows95hahahah");
 ```
 
 **console：**
@@ -56,24 +67,10 @@ tags:
 
 ![Positive Lookahead regex101](../../assets/regexp/positive-lookahead101.jpg)
 
-### 3. 正向否定预检查 Negative Lookahead
+### 3. 反向肯定预检查 Positive Lookbehind
 
 ```js
-;/windows(?!95|NT|xp)/.exec('windows10heihei')
-```
-
-**console：**
-
-![Negative Lookahead console](../../assets/regexp/negative-lookahead.jpg)
-
-**regex101：**
-
-![Negative Lookahead regex101](../../assets/regexp/negative-lookahead101.jpg)
-
-### 4. 反向肯定预检查 Positive Lookbehind
-
-```js
-;/(?<=95|NT|xp)windows/.exec('NTwindows')
+/(?<=95|NT|xp)windows/.exec("NTwindows");
 ```
 
 **console：**
@@ -84,10 +81,24 @@ tags:
 
 ![Positive Lookbehind regex101](../../assets/regexp/positive-lookbehind101.jpg)
 
+### 4. 正向否定预检查 Negative Lookahead
+
+```js
+/windows(?!95|NT|xp)/.exec("windows10heihei");
+```
+
+**console：**
+
+![Negative Lookahead console](../../assets/regexp/negative-lookahead.jpg)
+
+**regex101：**
+
+![Negative Lookahead regex101](../../assets/regexp/negative-lookahead101.jpg)
+
 ### 5. 反向否定预检查 Negative Lookbehind
 
 ```js
-;/(?<!95|NT|xp)windows/.exec('haha10windows')
+/(?<!95|NT|xp)windows/.exec("haha10windows");
 ```
 
 **console：**
@@ -108,10 +119,10 @@ tags:
 
 由于都是 `non-capturing-group`(非捕获型分组)，所以结果匹配到的字符串，都不会包括括号里面的，即上面的例子中的 `windows`。
 
-## 例子 2：千位分隔符 Look Ahead Positive Assert {#example2}
+## 千位分隔符 Look Ahead Positive Assert {#example2}
 
 ```javascript
-'12345678.32423432'.replace(/(\d)(?=(\d{3})+\.)/g, '$1,')
+"12345678.32423432".replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
 ```
 
 **解释：**
@@ -123,12 +134,44 @@ tags:
 ```javascript
 export function toThousands(num) {
   return num.toString().replace(/\d+/, (n) => {
-    return n.replace(/\B(?=((\d{3})+\b))/g, ',')
-  })
+    return n.replace(/\B(?=((\d{3})+\b))/g, ",");
+  });
 }
+
+toThousands(12345.489101);
+// 输出为 '12,345.489101'
 ```
 
-## Reference {#reference}
+Copilot 做如下解释：
+
+Here's a breakdown of how it works:
+
+1. `num.toString()`: This converts the input number to a string. This is necessary because the `replace` method is a string method and doesn't work directly on numbers.
+
+2. `.replace(/\d+/, (n) => {...})`: This uses a regular expression to match one or more digits in the string. For each match, it calls a function that takes the matched string `n` as an argument and returns a new string.
+
+3. Inside the function, `n.replace(/\B(?=((\d{3})+\b))/g, ",")` is used to add commas in the appropriate places.
+
+   - `\B` matches a position where the previous and next character are either both words or both non-words. This ensures we're not at the beginning of the string.
+   - `(?=((\d{3})+\b))` is a positive lookahead that matches a group ahead in the string without including it in the result. It looks for one or more groups of three digits (`\d{3}`) that are not followed by a word boundary (`\b`). This effectively matches every group of three digits that are at the end of a larger group of digits.
+   - `/g` is the global flag for the regular expression, which means the replacement will happen for all matches in the string, not just the first one.
+   - `","` is the replacement string, which will replace each match of the regular expression (i.e., each place where a comma should go).
+
+So, if you call `add_comma_every_thousand(1234567)`, the function will return the string `"1,234,567"`. This function can be useful in a variety of applications where you need to display large numbers in a more readable format.
+
+## 关于正向/反向更典型的举例
+
+```js
+"hello world".replace(/(?=hello)/g, ",");
+// 输出为 ',hello world'
+
+"hello world".replace(/(?<=hello)/g, ",");
+// 输出为 'hello, world'
+```
+
+可以看到，`(?=hello)` 表示匹配 `hello` 前面的位置，而 `(?<=hello)` 表示匹配 `hello` 后面的位置，然后被 `,` 替换。
+
+## Reference
 
 1. <https://segmentfault.com/q/1010000004651380>
 
