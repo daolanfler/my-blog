@@ -14,7 +14,7 @@ tags:
 
 - 需要升级一下 postcss， vue.config.js 做如下改动
 
-  ```javascript
+  ```JavaScript
   {
     css: {
       loaderOptions: {

@@ -121,7 +121,7 @@ tags:
 
 ## 千位分隔符 Look Ahead Positive Assert {#example2}
 
-```javascript
+```JavaScript
 "12345678.32423432".replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
 ```
 
@@ -131,7 +131,7 @@ tags:
 
 上面的千分位分隔正则表达式对没有小数点部分的字符串无效，更完整的可以使用如下的方法：
 
-```javascript
+```JavaScript
 export function toThousands(num) {
   return num.toString().replace(/\d+/, (n) => {
     return n.replace(/\B(?=((\d{3})+\b))/g, ",");

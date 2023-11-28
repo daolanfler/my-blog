@@ -61,7 +61,7 @@ ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHu
     "*.wxss": "css",
     "*.wxml": "html",
     "*.cjson": "jsonc",
-    "*.wxs": "javascript"
+    "*.wxs": "JavaScript"
 },
 ```
 
