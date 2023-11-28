@@ -57,7 +57,7 @@ function fin_ret() {
 
 ### TypeScript try catch and return type
 
-```TypeScript
+```ts
 async function throw_or_return(x: number) {
   //           ^?
   try {
@@ -81,7 +81,7 @@ function throw_if_x_greater_than_12(x: number) {
 
 如果你想指明某个函数只会抛出错误，显示地标注返回类型为 `never` 即可:
 
-```TypeScript
+```ts
 function definitelyThrows(): never {
   throw new Error("I throws")
 }
@@ -90,7 +90,7 @@ function definitelyThrows(): never {
 stripe 一个 `T | undefined | null` 中的空值：(with 
 [assert functions](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions))
 
-```TypeScript
+```ts
 export function assertExists<T>(
   v: T | null | undefined,
   message: Error | string = "val does not exist"
