@@ -103,3 +103,31 @@ export function assertExists<T>(
   }
 }
 ```
+
+### Discriminated Union 应用 
+
+[playground link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAsiAKFhQLxQN4Cgo6gcwgDsATCAJwC4oBGKAHygCYBubXAQwKsIFcBbAEblWAXygAyKAAoAwu2QMAIgHs8ASkyZQkKHORosuKIXZ8IVAOQBjeRdZH2V4AEtlhS2eUB3O5hGbtaBU8VAw2HBMzS2JVXwcnV3coCwF2MgBrCz9NUisAGzToKzcAZ2RIYCo4RGBWTGcAM2kKgDpI6BRO5JtgCzUwo1bHFzdmKAB6cahATfjAGcSoQJKrMmcwZEBfgMAK40Ba00AvxShhxKhAejMoTy8ocImpqAA9AH4-IA)  
+
+```ts
+type MyPet = {
+    gender: 1 | 2;
+    age: number;
+} & (Cat | Dog)
+
+type Cat = {
+    name: 'cat';
+    action: 'meow';
+}
+
+type Dog = {
+    name: 'dog';
+    action: 'bark'
+}
+
+declare const pet: MyPet;
+
+if (pet.name === 'cat') {
+    pet.action; // 这里 typescript 能推断出 action 是 meow 
+    //  ^?
+}
+```
