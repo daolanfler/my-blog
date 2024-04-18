@@ -1,5 +1,5 @@
 ---
-title: Array
+title: Array in JavaScript (by ChatGPT)
 date: 2023-12-01 14:38:00
 tags:
   - JavaScript
