@@ -24,7 +24,7 @@ tags:
 
 一般情况以上四条规则就可以cover 了，但是ES6 新加的箭头函数就不是这样。它的this用lexical this概括再好不过了。Lexical 这个词，在讲作用域时提到了JS 是Lexical Scope ，lexical 强调的是声明时，author-time，反正我是这么理解的。所以，箭头函数中的this就只与定义它时的父级上下文相关，而且无法用bind、call、apply 改变。 看下面三个例子，就很清楚了：
 
-```JavaScript
+```js
 function foo() {
   setTimeout(() => {
     // `this` here is lexically adopted from `foo()`
@@ -37,7 +37,7 @@ var obj = {
 foo.call( obj ) // 2 将 foo 中的 `this` 绑定到了 obj 上，对应情形 2
 ```
 
-```JavaScript
+```js
 function foo() {
   var self = this // lexical capture of `this`
   setTimeout( function(){
@@ -50,7 +50,7 @@ var obj = {
 foo.call(obj) // 2 注意这里不是箭头函数
 ```
 
-```JavaScript
+```js
 function foo() {
   // return an arrow function
   return () => {

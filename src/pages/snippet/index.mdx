@@ -128,7 +128,7 @@ function fn({ start = 0, end = 1 } = {}) {
 使用 `raw-loader` 加载 svg 文件，获取其中的代码为字符串。[来源](https://github.com/codesandbox/codesandbox-client/issues/747#issuecomment-443996080)
  以及 [inline loader 语法](https://webpack.js.org/concepts/loaders/#inline)
 
-```JavaScript
+```js
 import earthSvg from "!raw-loader!./icons/earth.svg";
 ```
 
@@ -185,7 +185,7 @@ neovim 的剪贴板是有一个优先级的，详见 [相关 issue](https://gith
 
 即将到来的运算符：`?.` 和 `??`
 
-```JavaScript
+```js
 const adventurer = {
   name: "Alice",
   cat: {
@@ -221,7 +221,7 @@ console.log(dogName);
 
 需要项目中有相应的 `.d.ts` 文件定义的类型，引入`@types/pkgName`或者有些库会自带 `ts declaration`或则自己定义。示例：
 
-```JavaScript
+```js
 /**
  * @description 这样在输入 map. 的时候（vscode的）intellisense 即可触发
  * @type {BMap.Map}
@@ -243,7 +243,7 @@ export default function (customHeaders = []) {
 参考 Element UI el-table 中 [showOverflowTooltip](https://github.com/ElemeFE/element/blob/50a464ea555c0711d1c47efa31c3cff742ededf1/packages/table/src/table-body.js#L252)
  的实现：
 
-```JavaScript
+```js
 export function isContentOverflow(el) {
   // use range width instead of scrollWidth to determine whether the text is overflowing
   // to address a potential FireFox bug: https://bugzilla.mozilla.org/show_bug.cgi?id=1074543#c3
