@@ -37,3 +37,11 @@
   ```
 
 - Maybe I should not use taobao's npm registry, see [this article](https://juejin.cn/post/7062592728621645854)
+
+
+## tips 
+
+to update all deps to latest use:  
+```bash
+pnpm up --latest
+```
