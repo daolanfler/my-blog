@@ -138,15 +138,17 @@ if (pet.name === "cat") {
 
 ```js
 function run() {
-  function logAfter3s() {
+  function logAfterDelay() {
     setTimeout(() => {
-      // this log is `undefined` because at this time although `nonExistVar` is
-      // declared and available but it hasn't been assigned yet
-      console.log(nonExistVar);
+      // 虽然在定义的时候 nonExistVarYet 还不存在，但是他已经被 hoist 了，所以闭包还是能捕获到
+      // 这里会输出 "actually hoist so it does exist in setTimeout's scope"
+      console.log(nonExistVarYet);
     }, 300);
   }
+  logAfterDelay()
 }
 
-// if use `var` here, this code will error because `var` doesn't hoist
-let nonExistVar = "actually hoist so it does exist in setTimeout's scope";
+// 注意这里用的是 `let` 用 var 就捕获不到了
+let nonExistVarYet = "actually hoist so it does exist in setTimeout's scope";
+run()
 ```
