@@ -3,8 +3,8 @@ import BaseLayout from "./BaseLayout.astro";
 import type { MarkdownLayoutProps } from "astro";
 
 interface Titles {
-    title?: string;
-    pageTitle?: string;
+  title?: string;
+  pageTitle?: string;
 }
 
 type Props = MarkdownLayoutProps<Titles> | Titles;
@@ -12,15 +12,73 @@ const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
 ---
 
 <BaseLayout pageTitle={pageTitle || title}>
-    <article
-        class="px-4 prose m-auto max-w-3xl prose-img:rounded dark:prose-invert prose-headings:mt-4 prose-hr:my-4 prose-hr:border prose-hr:border-dashed prose-hr:border-gray-400"
-    >
-        <slot />
-    </article>
+  <article
+    class="px-4 prose m-auto max-w-3xl prose-img:rounded dark:prose-invert prose-headings:mt-4 prose-hr:my-4 prose-hr:border prose-hr:border-dashed prose-hr:border-gray-400"
+  >
+    <slot />
+  </article>
 </BaseLayout>
 
 <style is:global>
-    /* article h1 {
+  /* article h1 {
         text-align: center !important;
     } */
 </style>
+
+
+
+<!-- copy `copy` from  https://timneubauer.dev/blog/copy-code-button-in-astro/ -->
+<style is:global>
+  .copy-code {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #3730a3;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .copy-code:hover {
+    background-color: #312e81;
+  }
+</style>
+
+<script>
+  let copyButtonLabel = "Copy Code";
+  let codeBlocks = Array.from(document.querySelectorAll("pre"));
+
+  for (let codeBlock of codeBlocks) {
+    let wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+
+    let copyButton = document.createElement("button");
+    copyButton.className = "copy-code";
+    copyButton.innerHTML = copyButtonLabel;
+
+    codeBlock.setAttribute("tabindex", "0");
+    codeBlock.appendChild(copyButton);
+    // wrap codebock with relative parent element
+    codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+    wrapper.appendChild(codeBlock);
+
+    copyButton.addEventListener("click", async () => {
+      await copyCode(codeBlock, copyButton);
+    });
+  }
+
+  async function copyCode(block: HTMLPreElement, button: HTMLButtonElement) {
+    let code = block.querySelector("code");
+    let text = code?.innerText;
+
+    await navigator.clipboard.writeText(text!);
+
+    // visual feedback that task is completed
+    button.innerText = "Code Copied";
+
+    setTimeout(() => {
+      button.innerText = copyButtonLabel;
+    }, 700);
+  }
+</script>
+
