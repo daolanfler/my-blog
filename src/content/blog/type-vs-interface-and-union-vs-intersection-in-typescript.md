@@ -271,12 +271,12 @@ declare function fetchInstance<T>():
       message: string;
     };
 
-const result = fetchInstance<number[]>()
+const result = fetchInstance<number[]>();
 
-if (result.code ===0) {
-    console.log(result.data) // no message field
+if (result.code === 0) {
+  console.log(result.data); // no message field
 } else {
-    console.log(result.message) // no data field
+  console.log(result.message); // no data field
 }
 ```
 

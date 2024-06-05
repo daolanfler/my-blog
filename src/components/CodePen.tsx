@@ -23,7 +23,7 @@ export default function (props: Props) {
     s.async = true;
     document.body.appendChild(s);
   });
-  
+
   return (
     <>
       <p

@@ -28,7 +28,7 @@ app.use(
     saveUninitialized: false,
     secret: "goodone",
     resave: false,
-  })
+  }),
 );
 ```
 

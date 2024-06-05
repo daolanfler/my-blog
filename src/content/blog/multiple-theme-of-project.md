@@ -32,11 +32,11 @@ html {
   --primary-color: #0a244d;
 }
 
-html[data-theme='red'] {
+html[data-theme="red"] {
   --primary-color: red;
 }
 
-html[data-theme='blue'] {
+html[data-theme="blue"] {
   --primary-color: blue;
 }
 ```
@@ -127,11 +127,11 @@ module.exports = {
   // ...
   extend: {
     colors: {
-      'primary-color': 'var(--primary-color)', // 使用的时候直接 text-primary-color 即可，vscode 插件也能正常提示
+      "primary-color": "var(--primary-color)", // 使用的时候直接 text-primary-color 即可，vscode 插件也能正常提示
     },
   },
   // ...
-}
+};
 ```
 
 ## 参考

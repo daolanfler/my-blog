@@ -35,9 +35,9 @@ tags:
 ## SSH 常见的问题 {#ssh}
 
 - 创建新用户，并加入 sudo 用户组  
-   [Initial Server Setup with Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04) step 2  
+   [Initial Server Setup with Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04) step 2
 - 允许/屏蔽使用密码进行 ssh 连接  
-  [Initial Server Setup with Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04)  step 5
+  [Initial Server Setup with Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-16-04) step 5
 - 新建的用户，只有密码如何才能配置通过 ssh key 访问  
   [Initial Server Setup with Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04) step 5
 - 如果 ssh 连接不上，如何打开调试  
@@ -48,7 +48,7 @@ tags:
   [vscode ssh remote 官方文档](https://code.visualstudio.com/blogs/2019/10/03/remote-ssh-tips-and-tricks)
 
   ```yaml
-    # dont use root@<ip address> as HOST, caution!!! vscode will treat is as as server instead of a name 
+    # dont use root@<ip address> as HOST, caution!!! vscode will treat is as as server instead of a name
     Host root
         HostName <your_host_ip_address>
         User root
@@ -63,8 +63,7 @@ tags:
 
 - 使用免费的 lets encrypt  
   [How To Secure Nginx with Let's Encrypt on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
-- [目前不支持通配符（wildcard），要增加 subdomain 怎么做](https://community.letsencrypt.org/t/how-can-i-add-more-subdomains-to-my-ssl-certificate/33711)  
-
+- [目前不支持通配符（wildcard），要增加 subdomain 怎么做](https://community.letsencrypt.org/t/how-can-i-add-more-subdomains-to-my-ssl-certificate/33711)
 
 ## 关于 Github Pages 的 custom domain 设置 {#github-pages-custom-domain}
 
@@ -82,7 +81,7 @@ tags:
 ## 关于 docker {#docker}
 
 - [How To Install and Use Docker on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04)
-  
+
 ## 总结 {#summary}
 
 Digital Ocean 的文档真香！

@@ -4,17 +4,16 @@ export const prerender = false;
 
 // themeCookie is the cookie Value
 export default function ThemeToggle({ themeCookie }: { themeCookie?: string }) {
+  const initialTheme = import.meta.env.SSR
+    ? themeCookie ?? "light"
+    : localStorage.getItem("theme") ?? "light";
 
-  const initialTheme = import.meta.env.SSR ? (themeCookie ?? 'light') : (localStorage.getItem("theme") ?? "light");
-
-  const [theme, setTheme] = createSignal(
-    initialTheme
-  );
+  const [theme, setTheme] = createSignal(initialTheme);
 
   const [mounted, setMounted] = createSignal(false);
 
   const handleClick = () => {
-    const nextTheme = theme() === "light" ? "dark" : "light"
+    const nextTheme = theme() === "light" ? "dark" : "light";
     setTheme(nextTheme);
     document.cookie = `theme=${nextTheme}; path=/`;
   };
@@ -37,7 +36,7 @@ export default function ThemeToggle({ themeCookie }: { themeCookie?: string }) {
       when={mounted()}
       fallback={
         <button onClick={handleClick}>
-          {themeCookie === "dark" ? "🌞" : "🌙"  }
+          {themeCookie === "dark" ? "🌞" : "🌙"}
         </button>
       }
     >

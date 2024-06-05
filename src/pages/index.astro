@@ -12,32 +12,25 @@ const blogEntries = await getCollection("blog");
 ---
 
 <BaseLayout>
-	<div class="py-6 px-4 m-auto max-w-3xl">
-		<ul>
-			{
-				blogEntries
-					.sort(
-						(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-					)
-					.filter(item => !item.data.draft)
-					.map((entry) => (
-						<li class="mb-4">
-							<div class="text-xl mb-2">
-								<a href={`/posts/${entry.slug}`}>
-									{entry.data.title}
-								</a>
-							</div>
-							<div class="text-left text-gray-500 ">
-								<time
-									datetime={entry.data.date.toISOString()}
-									class="mr-2"
-								>
-									{entry.data.date.toLocaleString()}
-								</time>
-							</div>
-						</li>
-					))
-			}
-		</ul>
-	</div>
+  <div class="py-6 px-4 m-auto max-w-3xl">
+    <ul>
+      {
+        blogEntries
+          .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+          .filter((item) => !item.data.draft)
+          .map((entry) => (
+            <li class="mb-4">
+              <div class="text-xl mb-2">
+                <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
+              </div>
+              <div class="text-left text-gray-500 ">
+                <time datetime={entry.data.date.toISOString()} class="mr-2">
+                  {entry.data.date.toLocaleString()}
+                </time>
+              </div>
+            </li>
+          ))
+      }
+    </ul>
+  </div>
 </BaseLayout>

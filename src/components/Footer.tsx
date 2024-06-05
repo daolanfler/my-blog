@@ -1,4 +1,3 @@
-
 export default function Footer() {
   return (
     <footer class="py-5 h-16">

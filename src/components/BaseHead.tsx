@@ -7,5 +7,4 @@ const BaseHead = (props: { title?: string }) => {
   );
 };
 
-
 export default BaseHead;

@@ -17,17 +17,17 @@ tags:
 ```js
 function do1() {
   return new Promise((resolve, reject) => {
-    throw new Error('do1')
-    setTimeout(resolve, 1000)
-  })
+    throw new Error("do1");
+    setTimeout(resolve, 1000);
+  });
 }
 
 function do2() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      reject(new Error('do2'))
-    }, 1000)
-  })
+      reject(new Error("do2"));
+    }, 1000);
+  });
 }
 ```
 
@@ -36,10 +36,10 @@ Promise A+ 中[并没有关注于如何创建 promise](https://promisesaplus.com
 ```js
 do1()
   .then(do2)
-  .catch(err => {
-    console.log(err.stack)
-    throw err
-  })
+  .catch((err) => {
+    console.log(err.stack);
+    throw err;
+  });
 ```
 
 由于在 do1() 中抛出了异常，这个 then 中的 do2 不会执行。catch 中的回掉会执行，log err.stack，[根据规范](https://promisesaplus.com/#point-42)，如果`onRejected` 中抛出了异常，则返回一个以该异常为 reason 的 rejected promise。Chrome console 会提示`uncaught error in promise`。如果给包裹上 `try catch`，是捕获不到错误的，为什么可以看参考链接 2。
@@ -49,12 +49,12 @@ do1()
 ```js
 do1()
   .then(do2)
-  .catch(err => {
-    console.log(err.stack)
+  .catch((err) => {
+    console.log(err.stack);
     setTimeout(() => {
-      throw err
-    })
-  })
+      throw err;
+    });
+  });
 ```
 
 执行之后返回的是一个 `resolved promise` 。error 是一个 `uncaught Error`，而不是 `uncaught Error in promise`。
