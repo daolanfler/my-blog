@@ -19,6 +19,7 @@ const blogEntries = await getCollection("blog");
 					.sort(
 						(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 					)
+					.filter(item => !item.data.draft)
 					.map((entry) => (
 						<li class="mb-4">
 							<div class="text-xl mb-2">

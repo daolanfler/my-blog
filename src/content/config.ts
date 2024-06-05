@@ -11,6 +11,7 @@ const blogCollection = defineCollection({
     date: z.date().transform((v) => new Date(v.valueOf() - 8 * 60 * 60 * 1000)), // 东八区 to UTC
     updateDate: z.date().transform((v) => new Date(v.valueOf() - 8 * 60 * 60 * 1000)).optional(), // 东八区 to UTC
     relatedPosts: z.array(reference("blog")).optional(),
+    draft: z.boolean().optional(),
   }),
 });
 

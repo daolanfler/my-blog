@@ -1,5 +1,5 @@
 ---
-title: Traps and Tricks of JavaScript or TypeScript
+title: JS & TS 中一些意料之外的点
 date: 2023-11-21 14:17:00
 tags:
   - JavaScript
@@ -83,17 +83,17 @@ function throw_if_x_greater_than_12(x: number) {
 
 ```ts
 function definitelyThrows(): never {
-  throw new Error("I throws")
+  throw new Error("I throws");
 }
 ```
 
-stripe 一个 `T | undefined | null` 中的空值：(with 
+stripe 一个 `T | undefined | null` 中的空值：(with
 [assert functions](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-7.html#assertion-functions))
 
 ```ts
 export function assertExists<T>(
   v: T | null | undefined,
-  message: Error | string = "val does not exist"
+  message: Error | string = "val does not exist",
 ): asserts v is T {
   if (v === null || v === undefined) {
     if (message instanceof Error) {
@@ -104,30 +104,49 @@ export function assertExists<T>(
 }
 ```
 
-### Discriminated Union 应用 
+### Discriminated Union 应用
 
-[playground link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAsiAKFhQLxQN4Cgo6gcwgDsATCAJwC4oBGKAHygCYBubXAQwKsIFcBbAEblWAXygAyKAAoAwu2QMAIgHs8ASkyZQkKHORosuKIXZ8IVAOQBjeRdZH2V4AEtlhS2eUB3O5hGbtaBU8VAw2HBMzS2JVXwcnV3coCwF2MgBrCz9NUisAGzToKzcAZ2RIYCo4RGBWTGcAM2kKgDpI6BRO5JtgCzUwo1bHFzdmKAB6cahATfjAGcSoQJKrMmcwZEBfgMAK40Ba00AvxShhxKhAejMoTy8ocImpqAA9AH4-IA)  
+[playground link](https://www.typescriptlang.org/play?#code/C4TwDgpgBAsiAKFhQLxQN4Cgo6gcwgDsATCAJwC4oBGKAHygCYBubXAQwKsIFcBbAEblWAXygAyKAAoAwu2QMAIgHs8ASkyZQkKHORosuKIXZ8IVAOQBjeRdZH2V4AEtlhS2eUB3O5hGbtaBU8VAw2HBMzS2JVXwcnV3coCwF2MgBrCz9NUisAGzToKzcAZ2RIYCo4RGBWTGcAM2kKgDpI6BRO5JtgCzUwo1bHFzdmKAB6cahATfjAGcSoQJKrMmcwZEBfgMAK40Ba00AvxShhxKhAejMoTy8ocImpqAA9AH4-IA)
 
 ```ts
 type MyPet = {
-    gender: 1 | 2;
-    age: number;
-} & (Cat | Dog)
+  gender: 1 | 2;
+  age: number;
+} & (Cat | Dog);
 
 type Cat = {
-    name: 'cat';
-    action: 'meow';
-}
+  name: "cat";
+  action: "meow";
+};
 
 type Dog = {
-    name: 'dog';
-    action: 'bark'
-}
+  name: "dog";
+  action: "bark";
+};
 
 declare const pet: MyPet;
 
-if (pet.name === 'cat') {
-    pet.action; // 这里 typescript 能推断出 action 是 meow 
-    //  ^?
+if (pet.name === "cat") {
+  pet.action; // 这里 typescript 能推断出 action 是 meow
+  //  ^?
 }
+```
+
+### Hoist 和闭包
+
+本来以为是很基础的问题，没想到还有变手，在看[这篇博客](https://overreacted.io/a-complete-guide-to-useeffect/#why-usereducer-is-the-cheat-mode-of-hooks)的时候联想到的。
+
+```js
+function run() {
+  function logAfter3s() {
+    setTimeout(() => {
+      // this log is `undefined` because at this time although `nonExistVar` is
+      // declared and available but it hasn't been assigned yet
+      console.log(nonExistVar);
+    }, 300);
+  }
+}
+
+// if use `var` here, this code will error because `var` doesn't hoist
+let nonExistVar = "actually hoist so it does exist in setTimeout's scope";
 ```
