@@ -1,5 +1,5 @@
 ---
-title: JS & TS 中一些意料之外的点
+title: Tricks and Traps in JavaScript / TypeScript
 date: 2023-11-21 14:17:00
 tags:
   - JavaScript

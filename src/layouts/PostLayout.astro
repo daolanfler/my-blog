@@ -40,10 +40,14 @@ const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
   .copy-code:hover {
     background-color: #312e81;
   }
+  pre {
+    /* padding-top: 36px !important; */
+    @apply py-7 !important;
+  }
 </style>
 
 <script>
-  let copyButtonLabel = "Copy Code";
+  let copyButtonLabel = "Copy";
   let codeBlocks = Array.from(document.querySelectorAll("pre"));
 
   for (let codeBlock of codeBlocks) {
@@ -72,7 +76,7 @@ const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
     await navigator.clipboard.writeText(text!);
 
     // visual feedback that task is completed
-    button.innerText = "Code Copied";
+    button.innerText = "Copied";
 
     setTimeout(() => {
       button.innerText = copyButtonLabel;
