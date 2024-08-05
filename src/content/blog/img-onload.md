@@ -6,7 +6,7 @@ tags:
   - HTMLElement
 ---
 
-## img load 事件 {#img-load-event}
+## img load 事件 
 
 最近有一个需求，需要用到 canvas drawImage。看了一下 MDN 上的 canvas 教程，刚开始写出来是这样的：
 
@@ -80,7 +80,7 @@ await Promise.all(imgPromiseArr);
 // now all image loaded
 ```
 
-## 参考 {#reference}
+## 参考 
 
 1. [图片的异步加载与 onload 函数](https://www.jianshu.com/p/d3a02ffe94b6)
 2. [image pre-loading](https://www.google.com/search?q=image+pre-loading&oq=image+pre-loading)

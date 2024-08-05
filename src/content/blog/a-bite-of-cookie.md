@@ -8,7 +8,7 @@ tags:
 
 最近在看 Ben Awad 在 Youtube 上的 [Typescirpt + GraphQL Fullstack](https://youtu.be/I6ypD7qv3Z8) 教程，其中用户认证是通过 Cookie 实现的。视频中开发时 `http://localhost:4000/graphql` 跳转的是 ApolloServerPlayground，而我学习此视频的时候已经是跳转到 ApolloStudio 了。所以导致在开发调试 login 接口时 Cookie 的表现上，有一些不一样。最后我不得不使用 ApolloServerPluginLandingPageGraphQLPlayground 这个插件去 fallback。Cookie 是个很难调试的玩意儿，其实没有必要在此大费周折，问题很可能是出现在你的调试工具上，所以只要保证客户端在调用的时候正常即可 😅。
 
-## express-session cookie config {#express-session-cookie-config}
+## express-session cookie config 
 
 ```ts
 app.use(
@@ -37,7 +37,7 @@ app.use(
 - httpOnly: 设置 HTTP 响应头 [`Set-Cookie Http-Only`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie)，为 true 时，不允许客户端 JavaScript 改动 cookie。
 - sameSite: 设置 HTTP 响应头 [`Set-Cookie SameSite`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite) 属性，最新的浏览器中，如果没有指定，默认为 `lax`
 
-## Express 中 cors 的配置 {#cors-config-in-express}
+## Express 中 cors 的配置 
 
 使用 Apollo Server Playground 时，**不用设置 cors**，因为没有跨域 🤣。使用 Apollo Studio 时需要设置，但是[不起作用](https://community.apollographql.com/t/allow-cookies-to-be-sent-alongside-request/920)，所以我才不得不切回 playground
 
@@ -55,7 +55,7 @@ const corsOptions: CorsOptions = {
 
 当请求的 credentials 模式（Request.credential）为 `include` 模式时，_Access-Control-Allow-Credentials_ 响应头告诉浏览器是否要把 response 暴露给前端的 JavaScript 代码。
 
-## 客户端中 Request.credentials 的配置 {#request-credential-in-client}
+## 客户端中 Request.credentials 的配置 
 
 以 ApolloServerPlayground 为例：
 

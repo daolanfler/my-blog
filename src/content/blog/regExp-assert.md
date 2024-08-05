@@ -6,7 +6,7 @@ tags:
   - 正则表达式
 ---
 
-## 名词 {#terms}
+## 名词 
 
 以下都是预检查，类似于`(?:)`非捕获型分组，匹配到的内容不会被捕获
 
@@ -119,7 +119,7 @@ tags:
 
 由于都是 `non-capturing-group`(非捕获型分组)，所以结果匹配到的字符串，都不会包括括号里面的，即上面的例子中的 `windows`。
 
-## 千位分隔符 Look Ahead Positive Assert {#example2}
+## 千位分隔符 Look Ahead Positive Assert 
 
 ```js
 "12345678.32423432".replace(/(\d)(?=(\d{3})+\.)/g, "$1,");

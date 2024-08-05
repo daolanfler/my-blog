@@ -7,7 +7,7 @@ tags:
   - 编辑器
 ---
 
-## 字体 {#font}
+## 字体 
 
 字体一般只要是等宽就行了。推荐一款很好用的等宽字体 [FiraCode](https://github.com/tonsky/FiraCode)，可以开启 Font Legatures（连字符），只需在设置里面打开就行：
 
@@ -15,7 +15,7 @@ tags:
 "editor.fontLigatures": true,
 ```
 
-## 快捷键 {#shortcuts}
+## 快捷键 
 
 ctrl + shift + p ，输入 shortcut，可以看到[快捷键参考](https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf)，一些多行编辑的快捷键可以记一下提升开发速率。如 ctrl + alt + shit + ArrowKey、ctrl + p 等等。可以打开 screencast mode 用来演示。
 
@@ -28,11 +28,11 @@ ctrl + shift + p ，输入 shortcut，可以看到[快捷键参考](https://code
 },
 ```
 
-## 主题 {#theme}
+## 主题 
 
 ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHub Plus`，这两个主题不错，icon 推荐 `material icon theme`。
 
-## 插件 (前端、Vue 相关) {#extensions}
+## 插件 (前端、Vue 相关) 
 
 - Vetur // for Vue2
 - Volar // for Vue3
@@ -41,7 +41,7 @@ ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHu
 - GitLens
 - Partial Intellisense // diff 剪贴板上的文本
 
-## 集成终端 {#terminal}
+## 集成终端 
 
 如果是 windows 系统，用 git bash 可能会顺手一些。
 
@@ -51,7 +51,7 @@ ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHu
 
 当然也可以用 powershell cmd 或者 Cmder。
 
-## 对于 Vue 和小程序开发 {#vue-miniprogram}
+## 对于 Vue 和小程序开发 
 
 需要设置 file.associations 让 vs code 识别文件类型：
 
@@ -65,7 +65,7 @@ ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHu
 },
 ```
 
-## [Code Snippets 代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets) {#code-snippets}
+## [Code Snippets 代码片段](https://code.visualstudio.com/docs/editor/userdefinedsnippets) 
 
 [vue-vscode-snippets](https://marketplace.visualstudio.com/items?itemName=sdras.vue-vscode-snippets) 提供了一些常用的 snippets. 或者你可以自己定义 snippets，ctrl + shift + p 输入 snippets，选择相关文件类型，这里有一个例子：
 
@@ -90,7 +90,7 @@ ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHu
 
 或者用这个可以[在线编辑的](https://snippet-generator.app/)
 
-## Debug {#debug}
+## Debug 
 
 官方文档上有 [Nodejs debug 教程](https://code.visualstudio.com/docs/nodejs/nodejs-debugging)，下面是两个基本例子：
 
@@ -115,11 +115,11 @@ ctrl + shift + p，输入主题，选择主题即可。`One Dark Pro` 和 `GitHu
 },
 ```
 
-## 同步配置 {#settings-sync}
+## 同步配置 
 
 登录 GitHub 或微软账号即可。
 
-## vim config {#vim-configs}
+## vim config 
 
 ```json
 {

@@ -8,11 +8,11 @@ tags:
   - bash
 ---
 
-## 开启 wsl 与安装 Ubuntu {#prepare}
+## 开启 wsl 与安装 Ubuntu
 
 详见[官方文档](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10#manual-installation-steps)，最好是 windows pro 专业版，linux 发行版直接从应用商店安装即可
 
-## shell 配置 {#shell-config}
+## shell 配置
 
 1. 在应用商店下载 Windows Terminal 界面现代化。顺便安利一波 [PowerToys](https://github.com/microsoft/PowerToys)，微软开源的 windows 效率工具合集软件。
 
@@ -77,7 +77,7 @@ tags:
 
    然后再 `.zshrc` 中设置 `ZSH_THEME="spaceship"`
 
-## 命令行代理配置 {#proxy-config}
+## 命令行代理配置
 
 在 Windows host 上开启了代理服务，如何在 wsl 上也能使用？在 `~/set_proxy`建一个 shell 脚本 ，内容如下：
 
@@ -158,7 +158,7 @@ source ~/.zshrc
 # 即可在命令行中使用 proxy 来设置、取消、print 代理设置
 ```
 
-### 使用 Clash for Windows 如何配置 wsl2 代理 {#cfw-wsl2-proxy}
+### 使用 Clash for Windows 如何配置 wsl2 代理
 
 首选不需要上面提到的 set_proxy 脚本。感谢[这个帖子和回复](https://v2ex.com/t/677083#r_9057511)
 
@@ -199,7 +199,11 @@ nameserver 8.8.8.8
 generateResolvConf = false
 ```
 
-## 常见问题 {#faq}
+### 2024-08-05 更新
+
+最新版的 wsl2 支持 `networkmode = mirror`，以上内容只适用于 NAT 模式，clash for windows 的作者也已经「[删库跑路](https://x.com/fndroid/status/1719980029571109092)」，所以以上内容仅供参考。
+
+## 常见问题
 
 1. proxy 设置不生效：可能是 windows 防火墙设置有问题
 2. 设置 Windows Terminal 中 wsl 默认启动路径为 home `"//wsl$/Ubuntu/home/<yourname>/"`
@@ -209,7 +213,7 @@ generateResolvConf = false
 6. windows 和 wsl 的 localhost 映射并不是 **相互** 的，详见[issue](https://github.com/microsoft/WSL/issues/5211#issuecomment-628565569)
 7. 如何设置 wsl 静态 ip：<https://github.com/microsoft/WSL/issues/4150#issuecomment-1018524753>
 
-## 参考链接 {#reference}
+## 参考链接
 
 1. [oh-my-zsh 配置参考](https://segmentfault.com/a/1190000021409814)
 2. [proxy 脚本设置参考](https://zinglix.xyz/2020/04/18/wsl2-proxy/)
