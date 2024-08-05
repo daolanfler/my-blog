@@ -17,4 +17,5 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, autolinkConfig]],
   },
+  site: "https://daolanfler.xyz",
 });

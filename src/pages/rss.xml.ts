@@ -1,18 +1,21 @@
 import rss from "@astrojs/rss";
+import type { APIContext } from "astro";
 import { getCollection } from "astro:content";
 
-export async function get() {
+export async function GET(context: APIContext) {
   const posts = await getCollection("blog");
+
   return rss({
     title: "天方夜坛",
-    description: "daolanfler's blog",
-    site: "https://daolanfler.xyz",
+    description: "Let's talk whatever here",
+    site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
-      // description: post.data.description,
+      description: (post.data.tags || []).join(", "),
       link: `/posts/${post.slug}/`,
     })),
+
     customData: `<language>zh-cn</language>`,
   });
 }
