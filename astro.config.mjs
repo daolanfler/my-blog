@@ -13,8 +13,8 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // Enable Solid to support Solid JSX components.
   integrations: [solid(), mdx(), tailwind(), sitemap()],
-  output: "static",
-  // adapter: vercel(),
+  output: "hybrid",
+  adapter: vercel(),
   markdown: {
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, autolinkConfig]]
   },
