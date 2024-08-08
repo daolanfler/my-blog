@@ -1,45 +1,45 @@
 ---
 /** ------------- SSG start -------------- */
 
-// import type { CollectionEntry } from "astro:content";
-// import { getCollection } from "astro:content";
-// import PostLayout from "../../layouts/PostLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import PostLayout from "../../layouts/PostLayout.astro";
 
-// // 1. Generate a new path for every collection entry
-// export async function getStaticPaths() {
-//   const blogEntries = await getCollection("blog");
-//   return blogEntries.map((entry) => ({
-//     params: { slug: entry.slug },
-//     props: { entry },
-//   }));
-// }
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
 
-// // 2. When it's time to render, you can get the entry directly from the prop
-// const { entry } = Astro.props as { entry: CollectionEntry<"blog"> };
-// const { Content } = await entry.render();
+// 2. When it's time to render, you can get the entry directly from the prop
+const { entry } = Astro.props as { entry: CollectionEntry<"blog"> };
+const { Content } = await entry.render();
 
 /** ------------- SSG end -------------- */
 
 /** ------------- Server rendering start -------------- */
 
-import { getEntry } from "astro:content";
-import PostLayout from "../../layouts/PostLayout.astro";
+// import { getEntry } from "astro:content";
+// import PostLayout from "../../layouts/PostLayout.astro";
 
-export const prerender = false;
+// export const prerender = false;
 
-// 1. Get the slug from the incoming server request
-const { slug } = Astro.params;
-if (slug === undefined) {
-  throw new Error("Slug is required");
-}
-// 2. Query for the entry directly using the request slug
-const entry = await getEntry("blog", slug);
-// 3. Redirect if the entry does not exist
-if (entry === undefined) {
-  return Astro.redirect("/404");
-}
-// 4. (Optional) Render the entry to HTML in the template
-const { Content } = await entry.render();
+// // 1. Get the slug from the incoming server request
+// const { slug } = Astro.params;
+// if (slug === undefined) {
+//   throw new Error("Slug is required");
+// }
+// // 2. Query for the entry directly using the request slug
+// const entry = await getEntry("blog", slug);
+// // 3. Redirect if the entry does not exist
+// if (entry === undefined) {
+//   return Astro.redirect("/404");
+// }
+// // 4. (Optional) Render the entry to HTML in the template
+// const { Content } = await entry.render();
 
 /** ------------- Server rendering end -------------- */
 ---
