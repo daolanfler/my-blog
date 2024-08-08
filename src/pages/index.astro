@@ -21,7 +21,9 @@ const blogEntries = await getCollection("blog");
           .map((entry) => (
             <li class="mb-4">
               <div class="text-xl mb-2">
-                <a href={`/posts/${entry.slug}`}>{entry.data.title}</a>
+                <a href={`/posts/${entry.slug}`} class:list={[]}>
+                  {entry.data.title}
+                </a>
               </div>
               <div class="text-left text-gray-500 ">
                 <time datetime={entry.data.date.toISOString()} class="mr-2">

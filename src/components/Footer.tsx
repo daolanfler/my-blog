@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer class="py-5 h-16">
+    <footer class="py-5 h-16 pt-8">
       <div class="copyright flex items-center justify-center">
         <span class="dark:text-gray-300">&copy; 2022~2023</span>
         &nbsp;

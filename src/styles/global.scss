@@ -101,3 +101,10 @@ a.current-header-link {
   clip: auto;
   white-space: normal;
 }
+
+// for prose Maybe I should check @tailwindcss/typography doc 
+.prose {
+  h1 {
+    font-size: 1.75em;
+  }
+}

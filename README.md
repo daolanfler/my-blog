@@ -38,10 +38,14 @@
 
 - Maybe I should not use taobao's npm registry, see [this article](https://juejin.cn/post/7062592728621645854)
 
+## tips
 
-## tips 
+to update all deps to latest use:
 
-to update all deps to latest use:  
 ```bash
 pnpm up --latest
 ```
+
+## TODO
+
+- [ ] use [shadcn-ui](https://ui.shadcn.com/docs/installation/astro) to spare me out of design work
