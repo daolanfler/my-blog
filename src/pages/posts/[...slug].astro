@@ -44,7 +44,7 @@ const { Content } = await entry.render();
 /** ------------- Server rendering end -------------- */
 ---
 
-<PostLayout title={entry.data.title} pageTitle={entry.data.pageTitle}>
+<PostLayout postTitle={entry.data.title} pageTitle={entry.data.pageTitle}>
   <h1>{entry.data.title}</h1>
   <div class="text-right italic mb-4">
     发布于 <time>{entry.data.date.toLocaleString()}</time>

@@ -1,14 +1,13 @@
 ---
 import BaseHead from "../components/BaseHead";
-// import type { MarkdownLayoutProps } from "astro";
 import Footer from "../components/Footer";
 import NavHeader from "../components/NavHeader.astro";
 import "../styles/global.scss";
 
+type Props = {
+  pageTitle?: string;
+};
 
-// type Props = MarkdownLayoutProps<{
-//     title: string;
-// }> & { title: string };
 const { pageTitle } = Astro.props;
 ---
 

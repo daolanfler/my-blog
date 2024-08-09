@@ -1,14 +1,17 @@
 ---
+import type { MarkdownLayoutProps } from "astro"; // 此文件可用作 markdown layout
 import BaseLayout from "./BaseLayout.astro";
-import type { MarkdownLayoutProps } from "astro";
 
-interface Titles {
-  title?: string;
+type Props = Partial<
+  MarkdownLayoutProps<{ pageTitle?: string; title: string }>
+> & {
+  postTitle?: string;
   pageTitle?: string;
-}
+};
 
-type Props = MarkdownLayoutProps<Titles> | Titles;
-const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
+const { frontmatter, postTitle, pageTitle: _pageTitle } = Astro.props;
+const pageTitle = frontmatter?.pageTitle || _pageTitle;
+const title = frontmatter?.title || postTitle;
 ---
 
 <BaseLayout pageTitle={pageTitle || title}>
@@ -19,13 +22,6 @@ const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
   </article>
 </BaseLayout>
 
-<style is:global>
-  /* article h1 {
-        text-align: center !important;
-    } */
-</style>
-
-<!-- copy `copy` from  https://timneubauer.dev/blog/copy-code-button-in-astro/ -->
 <style is:global>
   .copy-code {
     position: absolute;
@@ -47,6 +43,8 @@ const { pageTitle, title } = (Astro.props as any).frontmatter || Astro.props;
 </style>
 
 <script>
+  // copied from  https://timneubauer.dev/blog/copy-code-button-in-astro/
+
   let copyButtonLabel = "Copy";
   let codeBlocks = Array.from(document.querySelectorAll("pre"));
 
