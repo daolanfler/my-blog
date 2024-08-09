@@ -47,9 +47,9 @@ html 如下：
     <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
       child1
     </div>
-    <div class="flex-1 bg-purple-400 p-2 min-h-0">
+    <div class="flex-1 bg-purple-400 p-2 min-h-0 overflow-y-scroll">
       <div class="text-white h-[160px]">
-        child2 里面的元素 太高了会撑开 child2
+        child2 里面的元素即使超出了也不会撑开 child2
       </div>
     </div>
   </div>
@@ -62,9 +62,9 @@ html 如下：
   <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
     child1
   </div>
-  <div class="flex-1 bg-purple-400 p-2 min-h-0">
+  <div class="flex-1 bg-purple-400 p-2 min-h-0 overflow-y-scroll">
     <div class="text-white h-[160px]">
-      注意 min-h-0 设置 child2 min-height = 0 就神奇的解决了这个问题
+      child2 里面的元素即使超出了也不会撑开 child2
     </div>
   </div>
 </div>
