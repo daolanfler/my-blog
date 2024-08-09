@@ -1,0 +1,75 @@
+---
+title: Flex 布局中子元素溢出的问题
+date: 2024-08-09 11:02:10
+tags:
+  - CSS
+---
+
+经常在编写布局的时候需要这样的一个问题，父元素的布局 `flex` 子元素 child1 设置好了 `flex: 0` 或者说指定了 `flex-basis`
+child2 设置为 `flex:1 `，当父元素指定了高度之后（以 `flex-direction: column` 为例），如果子元素的
+高度太高，那么子元素就会溢出父元素。
+
+<div class="mb-[60px] not-prose">
+  <div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
+    <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
+      child1
+    </div>
+    <div class="flex-1 bg-purple-400 p-2">
+      <div class="text-white h-[160px]">
+        child2 里面的元素 太高了会撑开 child2
+      </div>
+    </div>
+  </div>
+</div>
+
+html 如下：
+
+```html
+<div
+  class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1"
+>
+  <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
+    child1
+  </div>
+  <div class="flex-1 bg-purple-400 p-2">
+    <div class="text-white h-[160px]">
+      child2 里面的元素 太高了会撑开 child2
+    </div>
+  </div>
+</div>
+```
+
+之前我可能会在 child2 上设置一个 `calc(100% - 40px)` 之类的属性，但这样写有点 ugly 了，我其实比较排斥
+到处写 `calc` 来设置宽高。最近发现给 child2 设置 `min-height: 0` 就可以了:
+
+<div class="mb-[32px] not-prose">
+  <div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
+    <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
+      child1
+    </div>
+    <div class="flex-1 bg-purple-400 p-2 min-h-0">
+      <div class="text-white h-[160px]">
+        child2 里面的元素 太高了会撑开 child2
+      </div>
+    </div>
+  </div>
+</div>
+
+html 如下：
+
+```html
+<div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
+  <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
+    child1
+  </div>
+  <div class="flex-1 bg-purple-400 p-2 min-h-0">
+    <div class="text-white h-[160px]">
+      注意 min-h-0 设置 child2 min-height = 0 就神奇的解决了这个问题
+    </div>
+  </div>
+</div>
+```
+
+## 参考 
+
+- SO [Why don't flex items shrink past content size?](https://stackoverflow.com/a/36247448)

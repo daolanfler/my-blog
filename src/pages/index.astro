@@ -20,13 +20,13 @@ const blogEntries = await getCollection("blog");
           .filter((item) => !item.data.draft)
           .map((entry) => (
             <li class="mb-4">
-              <div class="text-xl mb-2">
+              <div class="text-xl mb-1">
                 <a href={`/posts/${entry.slug}`} class:list={[]}>
                   {entry.data.title}
                 </a>
               </div>
-              <div class="text-left text-gray-500 ">
-                <time datetime={entry.data.date.toISOString()} class="mr-2">
+              <div class="text-left text-gray-500">
+                <time datetime={entry.data.date.toISOString()} class="mr-2 text-sm italic">
                   {entry.data.date.toLocaleString()}
                 </time>
               </div>

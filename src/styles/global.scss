@@ -1,5 +1,5 @@
 main {
-  min-height: calc(100vh - 10em);
+  min-height: calc(100vh - 11em);
 }
 
 .heading-wrapper {
@@ -102,9 +102,11 @@ a.current-header-link {
   white-space: normal;
 }
 
-// for prose Maybe I should check @tailwindcss/typography doc 
+// for prose Maybe I should check @tailwindcss/typography doc
 .prose {
+  margin-top: 3em;
   h1 {
     font-size: 1.75em;
+    text-align: center;
   }
 }
