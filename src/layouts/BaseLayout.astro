@@ -3,6 +3,9 @@ import BaseHead from "../components/BaseHead";
 import Footer from "../components/Footer";
 import NavHeader from "../components/NavHeader.astro";
 import "../styles/global.scss";
+import "@fontsource/lxgw-wenkai";
+import "@fontsource/pt-sans"
+
 
 type Props = {
   pageTitle?: string;
@@ -27,7 +30,7 @@ const { pageTitle } = Astro.props;
     <BaseHead title={pageTitle} />
   </head>
 
-  <body class="dark:bg-gray-900 dark:text-white">
+  <body class="dark:bg-gray-900 dark:text-white font-sans">
     <NavHeader />
     <main>
       <!-- your content is injected here -->
