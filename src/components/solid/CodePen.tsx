@@ -1,3 +1,5 @@
+/** @jsxImportSource solid-js */
+
 import { onMount, createEffect, createSignal } from "solid-js";
 
 interface Props {

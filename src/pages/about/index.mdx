@@ -4,8 +4,7 @@ title: "About"
 pageTitle: 天方夜坛 - 关于
 ---
 
-import PostLayout from "../../layouts/PostLayout.astro";
-
+import { Button } from "@/components/ui/button.tsx";
 
 ### Who am I ?
 
@@ -16,21 +15,14 @@ import PostLayout from "../../layouts/PostLayout.astro";
 - Insisting freedom of speech and liberalisum
 - Will be in many corners of this planet
 
-### Things that make life easier
+### Demos
 
-- Vue3 + Vite
-- Leaflet
-- Rxjs
-- D3
-- WSL2 on windows
-- VS Code + Vim extension
-
-### Demos 
-[demos](./ui)
+<Button asChild>
+  <a href="/demos">Jump to</a>
+</Button>
 
 ### Contact me
 
 - [twitter](https://twitter.com/daolanfler)
 - [github](https://github.com/daolanfler)
 - [discord](https://discord.gg/ukNc3UJZxE)
-

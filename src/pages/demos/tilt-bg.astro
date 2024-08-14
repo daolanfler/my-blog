@@ -1,0 +1,58 @@
+---
+import SimpleHtml from "../../layouts/SimpleHtml.astro";
+---
+
+<SimpleHtml title="Tilt Bg">
+  <div class="grid-bg"></div>
+  <div class="text-2xl text-white text-center z-10 text">
+    倾斜的背景，使用 css 但是在倾斜角度较大的时候会有锯齿
+  </div>
+  <div class="mt-6">
+    <select name="select-angle" id="selectAngle">
+      <option value="20">rotateX 20</option>
+      <option value="30">rotateX 30</option>
+      <option value="45">rotateX 45</option>
+    </select>
+  </div>
+</SimpleHtml>
+
+<script is:inline>
+  const select = document.querySelector("#selectAngle");
+  select.onchange = (val) => {
+    console.log(val.target.value);
+    const angle = val.target.value;
+    // set angle css var
+    document.body.style.setProperty("--rotation", `${angle}deg`);
+  };
+</script>
+
+<style lang="scss">
+  body {
+    --rotation: 20deg;
+    @apply w-screen h-screen overflow-hidden relative;
+    @apply flex items-center justify-center flex-col;
+    // background: linear-gradient(225deg, #036075 0%, #08192c 100%);
+    background: radial-gradient(#036075, #08192c);
+    border-radius: 0px 0px 0px 0px;
+
+    perspective: 500px; /* 透视，只对 3d 有效，需要在父元素上设置 */
+
+    .text {
+      text-align: center;
+    }
+  }
+
+  .grid-bg {
+    pointer-events: none;
+    background-image: linear-gradient(
+        rgba(255, 255, 255, 0.2) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
+    background-size: 130px 100px; /* 网格单元的尺寸 */
+    transform-style: preserve-3d;
+    transform: translateX(-100vw) translateY(-120vh) rotateX(var(--rotation));
+    @apply absolute h-[300vh] w-[300vw] top-0 left-0;
+    transition: transform 0.3s ease-in;
+  }
+</style>

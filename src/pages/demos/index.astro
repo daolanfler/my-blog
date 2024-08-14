@@ -4,7 +4,7 @@ import {resolve} from 'node:path'
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const pwd = process.cwd();
-const dir = resolve(pwd, 'src/pages/ui');
+const dir = resolve(pwd, 'src/pages/demos');
 
 const files = await readdir(dir);
 
@@ -20,7 +20,7 @@ const entries = files
     {
       entries.map((item) => (
         <li class="mb-2 text-lg">
-          <a href={`/ui/${item}`} class="visited:underline ">{item}</a>
+          <a href={`/demos/${item}`} class="visited:underline ">{item}</a>
         </li>
       ))
     }

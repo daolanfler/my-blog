@@ -7,9 +7,9 @@
     },
     "strict": true,
     "allowJs": true,
-    // Solid specific settings
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    // https://docs.astro.build/en/guides/typescript/#errors-typing-multiple-jsx-frameworks-at-the-same-time
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
   "exclude": ["dist"]
 }

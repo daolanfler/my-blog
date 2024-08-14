@@ -1,13 +1,26 @@
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <slot name="title">
-            <title>标题</title>
-        </slot>
-    </head>
+---
+import "../styles/global.scss";
+import "../styles/global.css";
+import "@fontsource/lxgw-wenkai";
+import "@fontsource/pt-sans";
 
-    <body>
-        <slot />
-    </body>
+export type Props = {
+  title?: string;
+};
+
+const { title } = Astro.props;
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <slot name="title">
+      <title>{title || "标题"}</title>
+    </slot>
+  </head>
+
+  <body>
+    <slot />
+  </body>
 </html>
