@@ -18,7 +18,6 @@ export default {
     },
     extend: {
       fontFamily: {
-        lxgw: ["LXGW WenKai"],
         sans: ["PT Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
