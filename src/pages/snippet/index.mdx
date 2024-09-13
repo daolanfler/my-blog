@@ -5,6 +5,25 @@ pageTitle: 天方夜坛 - Snippets
 date: 2021-10-04 20:51
 ---
 
+### 计算颜色是亮还是暗
+
+经验计算：
+
+```ts
+/**
+ * 计算颜色亮度, 返回是否为暗色
+ */
+export const calculateLuminanceIsDark = (hex: string): boolean => {
+  const { r, g, b } = hexToRgb(hex);
+  // 计算亮度
+  const luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+  // 判断是否为暗色
+  return luminance / 255 < 0.5;
+};
+```
+
+---
+
 ### 杀死占用端口的进程
 
 on Linux:
