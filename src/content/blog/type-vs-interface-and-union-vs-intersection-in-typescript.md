@@ -5,7 +5,7 @@ tags:
   - typescript
 ---
 
-首先要说明的是 TypeScript 是一个 structural type system，与之相对应的是 [nominal type system](https://en.wikipedia.org/wiki/Nominal_type_system)（采用的语言有 C++/Java/C#/Rust 等)。二者的具体区别可以查看维基百科。
+首先要说明的是 TypeScript 是一个 structural type system，与之相对应的是 [nominal type system](https://en.wikipedia.org/wiki/Nominal_type_system)（采用的语言有 C++/Java/C#/Rust 等）。二者的具体区别可以查看维基百科。
 
 ## `type` vs `interface`
 

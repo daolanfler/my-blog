@@ -4,11 +4,12 @@ import mdx from "@astrojs/mdx";
 import tailwind from "@astrojs/tailwind";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
-import vercel from "@astrojs/vercel/serverless";
 import { autolinkConfig } from "./plugins/rehype-autolink-config";
 import sitemap from "@astrojs/sitemap";
 
 import react from "@astrojs/react";
+
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,7 +26,9 @@ export default defineConfig({
     react(),
   ],
   output: "hybrid",
-  adapter: vercel(),
+  adapter: node({
+    mode: "standalone",
+  }),
   markdown: {
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, autolinkConfig]],
   },

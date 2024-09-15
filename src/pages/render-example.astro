@@ -8,15 +8,15 @@ const { Content, headings } = await post1.render();
 ---
 
 <PostLayout>
-    <br />
-    headings: 
-    <ul>
-        {
-            headings.map((v) => {
-                return <li>{v.slug}</li>;
-            })
-        }
-    </ul>
-    <br />
-    <Content />
+  <br />
+  headings:
+  <ul>
+    {
+      headings.map((v) => {
+        return <li>{v.slug}</li>;
+      })
+    }
+  </ul>
+  <br />
+  <Content />
 </PostLayout>
