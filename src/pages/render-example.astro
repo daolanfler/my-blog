@@ -2,7 +2,7 @@
 import { getEntry } from "astro:content";
 import PostLayout from "../layouts/PostLayout.astro";
 
-const post1 = await getEntry("blog", "a-bite-of-cookie");
+const post1 = await getEntry("blog", "a-bite-of-cookie")!;
 
 const { Content, headings } = await post1.render();
 ---
