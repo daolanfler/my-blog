@@ -36,7 +36,6 @@ export default defineConfig({
       },
     }),
   ],
-  output: "static",
   adapter: vercel(),
   markdown: {
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, autolinkConfig]],
