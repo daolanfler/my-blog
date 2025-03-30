@@ -14,7 +14,7 @@ child2 设置为 `flex:1 `，当父元素指定了高度之后（以 `flex-direc
     <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
       child1
     </div>
-    <div class="flex-1 bg-purple-400 p-2">
+    <div class="flex-1 p-2 bg-purple-400">
       <div class="text-white h-[160px]">
         child2 里面的元素 太高了会撑开 child2
       </div>
@@ -25,13 +25,14 @@ child2 设置为 `flex:1 `，当父元素指定了高度之后（以 `flex-direc
 html 如下：
 
 ```html
+// index.html
 <div
   class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1"
 >
   <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
     child1
   </div>
-  <div class="flex-1 bg-purple-400 p-2">
+  <div class="flex-1 p-2 bg-purple-400">
     <div class="text-white h-[160px]">
       child2 里面的元素 太高了会撑开 child2
     </div>
@@ -47,7 +48,7 @@ html 如下：
     <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
       child1
     </div>
-    <div class="flex-1 bg-purple-400 p-2 min-h-0 overflow-y-scroll">
+    <div class="flex-1 min-h-0 p-2 overflow-y-scroll bg-purple-400">
       <div class="text-white h-[160px]">
         child2 里面的元素即使超出了也不会撑开 child2
       </div>
@@ -58,11 +59,12 @@ html 如下：
 html 如下：
 
 ```html
+// index.html
 <div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
   <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
     child1
   </div>
-  <div class="flex-1 bg-purple-400 p-2 min-h-0 overflow-y-scroll">
+  <div class="flex-1 min-h-0 p-2 overflow-y-scroll bg-purple-400">
     <div class="text-white h-[160px]">
       child2 里面的元素即使超出了也不会撑开 child2
     </div>

@@ -9,7 +9,9 @@ import { autolinkConfig } from "./plugins/rehype-autolink-config";
 import sitemap from "@astrojs/sitemap";
 
 import react from "@astrojs/react";
-import AstroPWA from '@vite-pwa/astro'
+import AstroPWA from "@vite-pwa/astro";
+
+import expressiveCode from "astro-expressive-code";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +20,10 @@ export default defineConfig({
     solid({
       include: "**/solid/*",
     }),
+    expressiveCode({
+      themeCssSelector: (theme) => `.${theme.type}`,
+      themes: ["dracula", "github-light"],
+    }),
     mdx(),
     tailwind({
       applyBaseStyles: false,
@@ -25,10 +31,10 @@ export default defineConfig({
     sitemap(),
     react(),
     AstroPWA({
-      devOptions: { 
-        enabled: true
-      }
-    })
+      devOptions: {
+        enabled: true,
+      },
+    }),
   ],
   output: "static",
   adapter: vercel(),
