@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout pageTitle="404 - 页面未找到" showNav={false}>
+  <div class="place-content-center grid h-screen px-4">
+    <div class="text-center">
+      <h1 class="dark:text-gray-100 font-sans text-5xl font-bold text-gray-900">
+        404
+      </h1>
+      <p class="dark:text-gray-400 mt-4 text-gray-500">你访问的页面不存在</p>
+      <a
+        href="/"
+        class="hover:bg-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 inline-block px-8 py-3 mt-6 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg"
+      >
+        返回首页
+      </a>
+    </div>
+  </div>
+</BaseLayout>
