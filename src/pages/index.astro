@@ -1,6 +1,7 @@
 ---
 // Component Imports
 import { getCollection } from "astro:content";
+import { format } from "date-fns";
 // import Counter from "../components/Counter";
 // import GreetingCard from "../components/greeting/GreetingCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
@@ -19,17 +20,21 @@ const blogEntries = await getCollection("blog");
           .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
           .filter((item) => !item.data.draft)
           .map((entry) => (
-            <li class="mb-4">
-              <div class="mb-1 text-xl">
-                <a href={`/posts/${entry.slug}`} class:list={[]}>
-                  {entry.data.title}
-                </a>
-              </div>
-              <div class="text-left text-gray-500">
-                <time datetime={entry.data.date.toISOString()} class="mr-2 text-sm italic">
-                  {entry.data.date.toLocaleString()}
-                </time>
-              </div>
+            <li class="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md">
+              <a href={`/posts/${entry.slug}`} class="sm:py-4 block px-2 py-2">
+                <div class="gap-x-4 sm:flex items-center justify-between">
+                  <div class="sm:text-xl">{entry.data.title}</div>
+
+                  <div class="sm:flex flex-1 hidden border-b border-gray-300 border-dashed" />
+
+                  <time
+                    datetime={entry.data.date.toISOString()}
+                    class="sm:text-base text-sm text-gray-500"
+                  >
+                    {format(entry.data.date, "MMM d, yyyy")}
+                  </time>
+                </div>
+              </a>
             </li>
           ))
       }

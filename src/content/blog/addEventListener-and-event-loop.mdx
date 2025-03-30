@@ -1,5 +1,5 @@
 ---
-title: 冒泡和原始事件的回调是在同一个 event-loop 中执行的吗？
+title: 冒泡和原始事件的回调的执行顺序
 date: 2022-04-02 10:46:00
 tags:
   - JavaScript
@@ -8,6 +8,8 @@ tags:
 
 import Stackblitz from "../../components/Stackblitz.astro";
 
+
+问题：冒泡和原始事件的回调是在同一个 event-loop 中执行的吗？
 TLDR; 是的，而且是同步执行
 
 之前看到的这篇 Jake Archibald [Tasks, microtasks, queues and schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/) 关于 event-loop 的文章，有一个疑惑，同样是 addEventListener，如果是用户点击触发的，那事件回调就是异步的，如果通过 `el.click()` 这种 JavaScript 触发的方式则是[同步的](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/#:~:text=event%20to%20dispatch-,synchronously,-%2C%20so%20the%20script)，那冒泡事件的回调和原始事件的回调是不是在同一个 task 中执行呢？
