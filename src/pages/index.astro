@@ -23,7 +23,7 @@ const blogEntries = await getCollection("blog");
             <li class="hover:bg-gray-100 dark:hover:bg-gray-800 rounded-md">
               <a href={`/posts/${entry.slug}`} class="sm:py-4 block px-2 py-2">
                 <div class="gap-x-4 sm:flex items-center justify-between">
-                  <div class="sm:text-xl">{entry.data.title}</div>
+                  <div class="sm:text-xl text-lg">{entry.data.title}</div>
 
                   <div class="sm:flex flex-1 hidden border-b border-gray-300 border-dashed" />
 
