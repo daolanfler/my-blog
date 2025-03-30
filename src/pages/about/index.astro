@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/PostLayout.astro";
+
+const socialLinks = [
+  {
+    platform: "Twitter",
+    username: "@daolanfler",
+    url: "https://twitter.com/daolanfler",
+  },
+  {
+    platform: "GitHub",
+    username: "@daolanfler",
+    url: "https://github.com/daolanfler",
+  },
+  {
+    platform: "Discord",
+    username: "天方夜坛",
+    url: "https://discord.gg/ukNc3UJZxE",
+  },
+];
+---
+
+<BaseLayout postTitle="About" pageTitle="天方夜坛">
+  <div class="not-prose max-w-2xl mx-auto text-lg">
+    <h1 class="mb-8 text-4xl font-semibold">About</h1>
+
+    <div class="mb-12 space-y-2">
+      <p>I'm Daolanfler, a software engineer.</p>
+      <p>I enjoy Rock 'n' Roll and Folk music.</p>
+      <p>This site is a place for me to share my thoughts and ideas.</p>
+    </div>
+
+    <h2 class="mb-4 text-2xl font-semibold">Email</h2>
+    <p class="mb-12">
+      <a
+        href="mailto:daolanfler@gmail.com"
+        class="hover:text-gray-600 dark:hover:text-gray-300 no-underline"
+      >
+        daolanfler@gmail.com
+      </a>
+    </p>
+
+    <h2 class="mb-4 text-2xl font-semibold">Social</h2>
+    <ul class="space-y-3 list-disc list-inside">
+      {
+        socialLinks.map(({ platform, username, url }) => (
+          <li>
+            <a
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="hover:text-gray-600 dark:hover:text-gray-300 no-underline"
+            >
+              {platform}: {username}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
