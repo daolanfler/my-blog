@@ -12,7 +12,7 @@ const blogEntries = await getCollection("blog");
 ---
 
 <BaseLayout>
-  <div class="py-6 px-4 m-auto max-w-3xl">
+  <div class="max-w-2xl px-4 py-6 m-auto">
     <ul>
       {
         blogEntries
@@ -20,7 +20,7 @@ const blogEntries = await getCollection("blog");
           .filter((item) => !item.data.draft)
           .map((entry) => (
             <li class="mb-4">
-              <div class="text-xl mb-1">
+              <div class="mb-1 text-xl">
                 <a href={`/posts/${entry.slug}`} class:list={[]}>
                   {entry.data.title}
                 </a>
