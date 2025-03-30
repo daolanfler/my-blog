@@ -22,7 +22,7 @@ export default defineConfig({
     }),
     expressiveCode({
       themeCssSelector: (theme) => `.${theme.type}`,
-      themes: ["dracula", "github-light"],
+      themes: ["github-dark", "github-light"],
     }),
     mdx(),
     tailwind({
@@ -32,7 +32,7 @@ export default defineConfig({
     react(),
     AstroPWA({
       devOptions: {
-        enabled: true,
+        enabled: false, // 开了影响热更新
       },
     }),
   ],
