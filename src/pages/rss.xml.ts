@@ -7,8 +7,9 @@ export async function GET(context: APIContext) {
 
   return rss({
     title: "天方夜坛",
-    description: "Let's talk whatever here",
+    description: "This is Daolan's blog",
     site: context.site!,
+
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.date,
@@ -17,5 +18,6 @@ export async function GET(context: APIContext) {
     })),
 
     customData: `<language>zh-cn</language>`,
+    stylesheet: "/rss/styles.xsl",
   });
 }

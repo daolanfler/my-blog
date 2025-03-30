@@ -28,13 +28,13 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
     react(),
     AstroPWA({
       devOptions: {
         enabled: false, // 开了影响热更新
       },
     }),
+    sitemap()
   ],
   adapter: vercel(),
   markdown: {
