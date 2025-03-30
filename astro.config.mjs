@@ -33,6 +33,16 @@ export default defineConfig({
       devOptions: {
         enabled: false, // 开了影响热更新
       },
+      workbox: {
+        navigateFallback: '/',
+        // 排除 sitemap 相关文件
+        navigateFallbackDenylist: [/^\/sitemap(-\d+)?\.xml/],
+        // 或者使用 globPatterns 来明确指定不需要缓存的文件
+        globPatterns: [
+          '**/*.{js,css,html,ico,png,svg,jpg,jpeg,gif,webp}',
+          // 不包含 xml 文件
+        ]
+      }
     }),
     sitemap()
   ],
