@@ -3,8 +3,7 @@ import BaseHead from "../components/BaseHead";
 import Footer from "../components/Footer";
 import NavHeader from "../components/NavHeader.astro";
 import "../styles/global.scss";
-import { pwaInfo } from 'virtual:pwa-info';
-import ReloadPrompt from '../components/ReloadPrompt.astro';
+// import ReloadPrompt from '../components/ReloadPrompt.astro';
 
 
 
@@ -37,7 +36,7 @@ const { pageTitle } = Astro.props;
       <!-- your content is injected here -->
       <slot />
     </main>
-    <ReloadPrompt />
+    <!-- <ReloadPrompt /> -->
     <Footer />
   </body>
 </html>
