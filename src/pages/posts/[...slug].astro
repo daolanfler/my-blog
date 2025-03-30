@@ -4,6 +4,8 @@
 import type { CollectionEntry } from "astro:content";
 import { getCollection } from "astro:content";
 import PostLayout from "../../layouts/PostLayout.astro";
+import { format } from "date-fns";
+import ReadingTime from "@/components/ReadingTime.astro";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
@@ -46,8 +48,10 @@ const { Content } = await entry.render();
 
 <PostLayout postTitle={entry.data.title} pageTitle={entry.data.pageTitle}>
   <h1>{entry.data.title}</h1>
-  <div class="text-right italic mb-4">
-    发布于 <time>{entry.data.date.toLocaleString()}</time>
+  <div class="gap-x-2 flex items-center mb-4 text-left text-gray-500">
+    <time>{format(entry.data.date, "MMM d, yyyy")}</time>
+    <span>·</span>
+    <ReadingTime content={entry.body} />
   </div>
   <Content />
 </PostLayout>

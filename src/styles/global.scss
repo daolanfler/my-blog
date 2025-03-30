@@ -104,13 +104,18 @@ a.current-header-link {
   white-space: normal;
 }
 
-// for prose Maybe I should check @tailwindcss/typography doc
+/* Markdown 文章的使用了 @tailwind typography 插件 */
+
 .prose {
   margin-top: 3em;
   h1 {
     font-size: 1.75em;
-    text-align: center;
+    text-align: left;
   }
+}
+
+.expressive-code {
+  margin-bottom: 2em;
 }
 
 

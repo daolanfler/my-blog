@@ -1,0 +1,13 @@
+---
+import readingTime from "reading-time";
+
+interface Props {
+  content: string;
+}
+
+const { content }: Props = Astro.props;
+
+const time = readingTime(content);
+---
+
+<span>{Math.floor(time.minutes)} 分钟阅读</span>
