@@ -18,7 +18,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["PT Sans", ...defaultTheme.fontFamily.sans],
+        // sans: ["PT Sans", ...defaultTheme.fontFamily.sans],
       },
       colors: {
         border: "hsl(var(--border))",

@@ -31,7 +31,7 @@ const { pageTitle, showNav = true } = Astro.props;
     <BaseHead title={pageTitle} />
   </head>
 
-  <body class="dark:text-white font-sans">
+  <body class="dark:text-white font-sans antialiased">
     {showNav && <NavHeader />}
     <main>
       <!-- your content is injected here -->
