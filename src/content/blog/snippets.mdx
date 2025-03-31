@@ -1,8 +1,19 @@
 ---
 title: Useful Snippets
 date: 2021-10-04 20:51:00
-pageTitle: 天方夜坛 - Snippets
+pageTitle: Useful Snippets
+tags:
+  - snippets
 ---
+
+### git 清除缓存
+
+在更新 `.gitignore` 之后已经提交的文件仍然会被 git 跟踪，这时候需要清除缓存：
+
+```bash
+git rm -r --cached . && git add .
+git commit --amend --no-edit
+```
 
 ### 计算颜色是亮还是暗
 

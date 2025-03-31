@@ -1,3 +1,4 @@
 - [ ] talbe of contents, see https://medium.com/@rezahedi/how-to-build-table-of-contents-in-astro-and-sectionize-the-markdown-content-78bee84e6a7f
 - [ ] 滚动页面标题消失后，出现一个 header 渐入渐出动画
 - [-] Rss link & remove the Snippet link in Nav & Rss Feed style
+- [ ] 图片使用七牛云

@@ -10,12 +10,14 @@ export async function GET(context: APIContext) {
     description: "This is Daolan's blog",
     site: context.site!,
 
-    items: posts.map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.date,
-      description: (post.data.tags || []).join(", "),
-      link: `/posts/${post.slug}/`,
-    })),
+    items: posts
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .map((post) => ({
+        title: post.data.title,
+        pubDate: post.data.date,
+        description: (post.data.tags || []).join(", "),
+        link: `/posts/${post.slug}/`,
+      })),
 
     customData: `<language>zh-cn</language>`,
     stylesheet: "/rss/styles.xsl",
