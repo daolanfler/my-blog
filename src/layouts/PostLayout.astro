@@ -15,9 +15,7 @@ const title = frontmatter?.title || postTitle;
 ---
 
 <BaseLayout pageTitle={pageTitle || title}>
-  <article
-    class="dark:prose-invert prose-headings:mt-4 prose-img:rounded prose-hr:my-4 prose-hr:border prose-hr:border-dashed prose-hr:border-gray-400 max-w-2xl px-4 m-auto prose"
-  >
+  <article class="max-w-2xl px-4 m-auto prose">
     <slot />
   </article>
 </BaseLayout>

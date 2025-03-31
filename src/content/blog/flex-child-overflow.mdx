@@ -9,7 +9,7 @@ tags:
 child2 设置为 `flex:1 `，当父元素指定了高度之后（以 `flex-direction: column` 为例），如果子元素的
 高度太高，那么子元素就会溢出父元素。
 
-<div class="mb-[60px] not-prose">
+<div class="mb-[120px] ">
   <div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
     <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
       child1
@@ -43,7 +43,7 @@ html 如下：
 之前我可能会在 child2 上设置一个 `calc(100% - 40px)` 之类的属性，但这样写有点 ugly 了，我其实比较排斥
 到处写 `calc` 来设置宽高。最近发现给 child2 设置 `min-height: 0` 就可以了:
 
-<div class="mb-[32px] not-prose">
+<div class="mb-[32px] ">
   <div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
     <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
       child1
@@ -60,7 +60,9 @@ html 如下：
 
 ```html
 // index.html
-<div class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1">
+<div
+  class="flex flex-col h-[180px] max-w-[400px] bg-slate-100 m-auto border-dashed dark:border-gray-300 border-gray-600 border-2 rounded p-1"
+>
   <div class="flex-grow-0 basis-[40px] bg-yellow-200 p-2 text-blue-500">
     child1
   </div>
@@ -72,6 +74,6 @@ html 如下：
 </div>
 ```
 
-## 参考 
+## 参考
 
 - SO [Why don't flex items shrink past content size?](https://stackoverflow.com/a/36247448)
