@@ -17,14 +17,17 @@ export default defineConfig({
   // Enable Solid to support Solid JSX components.
   integrations: [
     solid({
-      include: "**/solid/*",
+      include: ["**/solid/**/*.{jsx,tsx}"],
     }),
     expressiveCode({
       themeCssSelector: (theme) => `.${theme.type}`,
       themes: ["github-dark", "github-light"],
     }),
     mdx(),
-    react(),
+    react({
+      include: ["**/*.{jsx,tsx}"],
+      exclude: ["**/solid/**/*.{jsx,tsx}"],
+    }),
     sitemap(),
   ],
   adapter: vercel(),
