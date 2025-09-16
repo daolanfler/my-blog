@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import solid from "@astrojs/solid-js";
 import mdx from "@astrojs/mdx";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import vercel from "@astrojs/vercel";
@@ -24,9 +24,6 @@ export default defineConfig({
       themes: ["github-dark", "github-light"],
     }),
     mdx(),
-    tailwind({
-      applyBaseStyles: false,
-    }),
     react(),
     sitemap(),
   ],
@@ -35,4 +32,7 @@ export default defineConfig({
     rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, autolinkConfig]],
   },
   site: "https://daolanfler.blog",
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

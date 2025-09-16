@@ -1,11 +1,11 @@
-import defaultTheme from "tailwindcss/defaultTheme";
+import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
-/** @type {import('tailwindcss').Config} */
-export default {
-  darkMode: ["class"],
+const config = {
+  darkMode: "class",
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
-    "./styles/**/*.css,scss",
+    "./styles/**/*.{css,scss}",
   ],
   prefix: "",
   theme: {
@@ -17,9 +17,6 @@ export default {
       },
     },
     extend: {
-      fontFamily: {
-        // sans: [...defaultTheme.fontFamily.sans],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -76,5 +73,7 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-};
+  plugins: [tailwindcssAnimate],
+} satisfies Config;
+
+export default config;

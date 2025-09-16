@@ -26,20 +26,20 @@ import SimpleHtml from "../../layouts/SimpleHtml.astro";
   };
 </script>
 
-<style lang="scss">
+<style>
+  @reference "../../styles/global.css";
+
   body {
     --rotation: 20deg;
     @apply w-screen h-screen overflow-hidden relative;
     @apply flex items-center justify-center flex-col;
-    // background: linear-gradient(225deg, #036075 0%, #08192c 100%);
     background: radial-gradient(#036075, #08192c);
-    border-radius: 0px 0px 0px 0px;
+    border-radius: 0;
+    perspective: 500px;
+  }
 
-    perspective: 500px; /* 透视，只对 3d 有效，需要在父元素上设置 */
-
-    .text {
-      text-align: center;
-    }
+  body .text {
+    text-align: center;
   }
 
   .grid-bg {
@@ -49,7 +49,7 @@ import SimpleHtml from "../../layouts/SimpleHtml.astro";
         transparent 1px
       ),
       linear-gradient(90deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
-    background-size: 130px 100px; /* 网格单元的尺寸 */
+    background-size: 130px 100px;
     transform-style: preserve-3d;
     transform: translateX(-100vw) translateY(-120vh) rotateX(var(--rotation));
     @apply absolute h-[300vh] w-[300vw] top-0 left-0;
